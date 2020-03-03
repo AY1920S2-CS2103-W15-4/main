@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>(WIP) Pet Store Helper - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1><strong>(WIP)</strong> Pet Store Helper - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>AY1920S2-CS2103-W15-4</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -11,22 +11,41 @@
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#command-summary">3. Command Summary</a></li>
+<li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#command-general-features">4.1. Command  / general features</a>
+<ul class="sectlevel3">
+<li><a href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></li>
+<li><a href="#navigating-to-previous-next-page-code-pp-code-code-np-code">4.1.3. Navigating to previous / next page: <code>pp</code> / <code>np</code></a></li>
+<li><a href="#changing-the-system-to-display-code-display-system-code">4.1.4. Changing the system to display: <code>display SYSTEM</code></a></li>
+<li><a href="#saving-the-data">4.1.5. Saving the data</a></li>
+<li><a href="#statistics-code-coming-in-v2-0-code">4.1.6. Statistics <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#pet-tracker-system">4.2. Pet Tracker System</a>
+<ul class="sectlevel3">
+<li><a href="#adding-a-pet-code-addpet-code">4.2.1. Adding a pet: <code>addpet</code></a></li>
+<li><a href="#finding-pets-by-names-or-tags-code-findpet-code">4.2.2. Finding pets by names or tags: <code>findpet</code></a></li>
+<li><a href="#tagging-a-pet-code-tagpet-code">4.2.3. Tagging a pet: <code>tagpet</code></a></li>
+<li><a href="#deleting-a-pet-code-deletepet-code">4.2.4. Deleting a pet: <code>deletepet</code></a></li>
+</ul>
+</li>
+<li><a href="#schedule-system">4.3. Schedule System</a>
+<ul class="sectlevel3">
+<li><a href="#adding-a-slot-code-addslot-code">4.3.1. Adding a slot: <code>addslot</code></a></li>
+<li><a href="#deleting-a-slot-code-deleteslot-code">4.3.2. Deleting a slot: <code>deleteslot</code></a></li>
+<li><a href="#edting-a-slot-code-editslot-code">4.3.3. Edting a slot: <code>editslot</code></a></li>
+<li><a href="#showing-current-schedule-code-showslots-code">4.3.4. Showing current schedule: <code>showslots</code></a></li>
+<li><a href="#showing-all-conflicts-code-conflict-code">4.3.5. Showing all conflicts: <code>conflict</code></a></li>
+<li><a href="#searching-a-slot-code-findslot-code">4.3.6. Searching a slot: <code>findslot</code></a></li>
+<li><a href="#check-slot-availability-code-checkslot-code">4.3.7. Check slot availability: <code>checkslot</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -34,64 +53,116 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Pet Store Helper (PSH) is for owners of pet shops who <strong>prefer to use a desktop app for managing their store</strong>. More importantly, PSH is <strong>optimized for those who prefer to work with a Command Line Interface (CLI)</strong> while still having the benefits of a Graphical User Interface (GUI). If you can type fast, PSH can help you get your work done faster than traditional GUI apps.</p>
+</div>
+<div class="paragraph">
+<p>It is based on 2 main systems, one that manages pets, and another one that organises showering schedules.</p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><em>Coming Soon!&trade;</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">3. Command Summary</a></h2>
+<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
-</li>
-<li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/AY1920S2-CS2103-W15-4/main/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
-</li>
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
+<p>Common / general features</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong>Help</strong>: <code>help</code></p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong>Exit</strong>: <code>exit</code></p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong>Navigate</strong>: <code>pp</code> / <code>np</code></p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong>Display</strong>: <code>display SYSTEM</code></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Pet Tracker System</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add pet</strong>: <code>addpet n/NAME a/AGE s/SPECIES b/BREED g/GENDER f/FOOD [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>addpet n/Garfield a/5 s/cat b/ginger tabby g/M t/lazy f/30 t/good for nothing t/lasagna</code></p>
+</li>
+<li>
+<p><strong>Find pet</strong>: <code>findpet [n/NAME]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>findpet n/garfield n/odie t/jon</code></p>
+</li>
+<li>
+<p><strong>Tag pet</strong>: <code>tagpet INDEX t/TAG [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>tagpet 2 t/smelly t/noisy t/cuddly</code></p>
+</li>
+<li>
+<p><strong>Delete pet</strong>: <code>deletepet INDEX</code><br>
+e.g. <code>deletepet 2</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Schedule System</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add slot</strong>: <code>addslot [i/INDEX] [n/PETNAME] t/TIME d/DURATION</code><br>
+e.g. <code>addslot i/1 t/14:00 d/2:00</code><br>
+e.g. <code>addslot n/Coco t/"20-2-2020 13:00" d/1:30</code></p>
+</li>
+<li>
+<p><strong>Delete slot</strong>: <code>deleteslot [i/INDEX] [n/PETNAME] t/TIME</code><br>
+e.g. <code>deleteslot i/1 t/14:00</code><br>
+e.g. <code>deleteslot n/Coco t/"20-2-2020 13:00"</code></p>
+</li>
+<li>
+<p><strong>Edit slot</strong>: <code>editslot i/INDEX t/TIME [nt/NEW_TIME]</code><br>
+e.g. <code>editslot i/1 t/14:00 nt/8:00</code><br>
+e.g. <code>editslot i/1 t/14:00 nt/19:00 nd/1:30</code><br>
+e.g. <code>editslot i/12 t/”20-2-2020 13:00” nd/2:00</code></p>
+</li>
+<li>
+<p><strong>Show schedule</strong>: <code>showslots [t/DATE]</code><br>
+e.g. <code>showslots</code><br>
+e.g. <code>showslots t/20-2-2020</code></p>
+</li>
+<li>
+<p><strong>Show conflicts</strong>: <code>conflict</code></p>
+</li>
+<li>
+<p><strong>Search</strong>: <code>findslot PETNAME [PETNAME2]</code><br>
+e.g. <code>findslot ABC</code></p>
+</li>
+<li>
+<p><strong>Check</strong>: <code>findslot PETNAME [PETNAME2]</code><br>
+e.g. <code>checkslot 01-01-2020 1700</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -117,28 +188,50 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="command-general-features"><a class="link" href="#command-general-features">4.1. Command  / general features</a></h3>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Exits the program.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigating-to-previous-next-page-code-pp-code-code-np-code"><a class="link" href="#navigating-to-previous-next-page-code-pp-code-code-np-code">4.1.3. Navigating to previous / next page: <code>pp</code> / <code>np</code></a></h4>
+<div class="paragraph">
+<p>Goes to the previous / next page of list of results of a command, when the list returned is too large and has to split across multiple pages.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>pp</code>: Goes to the previous page of the list<br>
+Format: <code>np</code>: Goes to the next page of the list</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-the-system-to-display-code-display-system-code"><a class="link" href="#changing-the-system-to-display-code-display-system-code">4.1.4. Changing the system to display: <code>display SYSTEM</code></a></h4>
+<div class="paragraph">
+<p>Changes the display board to show the specified system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display SYSTEM</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>SYSTEM</code> must be <code>p</code>, <code>s</code>, or <code>i</code>. No other values are allowed.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -146,45 +239,216 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>display p</code><br>
+Shows the pets in the pet tracker system</p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>display s</code><br>
+Shows the slots in the schedule system</p>
+</li>
+<li>
+<p><code>display i</code><br>
+Shows a list of all pet food (inventory) and the needed amount per week</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.1.5. Saving the data</a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>All data is saved to the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<div class="sect3">
+<h4 id="statistics-code-coming-in-v2-0-code"><a class="link" href="#statistics-code-coming-in-v2-0-code">4.1.6. Statistics <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Provides statistics about the pet tracker and schedule system, such as total number of pets, how many time slots are in conflict, etc.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pet-tracker-system"><a class="link" href="#pet-tracker-system">4.2. Pet Tracker System</a></h3>
+<div class="sect3">
+<h4 id="adding-a-pet-code-addpet-code"><a class="link" href="#adding-a-pet-code-addpet-code">4.2.1. Adding a pet: <code>addpet</code></a></h4>
+<div class="paragraph">
+<p>Adds a pet to the pet tracker system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addpet n/NAME a/AGE s/SPECIES b/BREED g/GENDER f/FOOD [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The age must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;, denoting how many years old the pet is.</p>
 </li>
+<li>
+<p>The gender must be either <code>F</code> or <code>M</code>.</p>
+</li>
+<li>
+<p>Food is specified as a quantity of weekly consumption in an arbitrary unit.</p>
+</li>
+<li>
+<p>A pet can have any number of tags (including 0)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addpet n/Garfield a/5 s/cat b/ginger tabby g/M f/30 t/lazy t/good for nothing t/lasagna</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-pets-by-names-or-tags-code-findpet-code"><a class="link" href="#finding-pets-by-names-or-tags-code-findpet-code">4.2.2. Finding pets by names or tags: <code>findpet</code></a></h4>
+<div class="paragraph">
+<p>Finds pets whose name contains any of the given keywords.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findpet [n/NAME]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one argument must be supplied.</p>
+</li>
+<li>
+<p>Pets matching at least 1 keyword will be returned (i.e. <code>OR</code> search).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findpet n/garfield n/odie t/jon</code><br>
+Returns a list of pets, whose names either contain <code>garfield</code> or <code>odie</code>, or have a tag labelled <code>jon</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tagging-a-pet-code-tagpet-code"><a class="link" href="#tagging-a-pet-code-tagpet-code">4.2.3. Tagging a pet: <code>tagpet</code></a></h4>
+<div class="paragraph">
+<p>Tags an existing pet in the system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tagpet INDEX t/TAG [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The existing tags of the pet will be removed, i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all tags of a pet by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>display p</code><br>
+  <code>tagpet 2 t/smelly t/noisy t/cuddly</code><br>
+Overrides the tags of the 2nd pet in the system with 3 tags of “smelly”, “noisy”, “cuddly”.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-pet-code-deletepet-code"><a class="link" href="#deleting-a-pet-code-deletepet-code">4.2.4. Deleting a pet: <code>deletepet</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified pet from the system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deletepet INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>display p</code><br>
+  <code>deletepet 2</code><br>
+Deletes the 2nd pet in the system.</p>
+</li>
+<li>
+<p><code>find n/garfield</code><br>
+  <code>deletepet 2</code><br>
+Deletes the 2nd pet in the results of the <code>find garfield</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schedule-system"><a class="link" href="#schedule-system">4.3. Schedule System</a></h3>
+<div class="sect3">
+<h4 id="adding-a-slot-code-addslot-code"><a class="link" href="#adding-a-slot-code-addslot-code">4.3.1. Adding a slot: <code>addslot</code></a></h4>
+<div class="paragraph">
+<p>Adds a new slot to the schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addslot [i/INDEX] [n/PETNAME] t/TIME d/DURATION</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>When index is used to specify the pet, it must exist in the pet tracker system first.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>Date is optional; by default, the current system date will be used if only time is specified.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>The time must follow the <code>dd/M/yyyy HH:mm</code> format.</p>
+</li>
+<li>
+<p>The time has to follow 24-hour format e.g. <code>13:00</code> instead of <code>1:00pm</code>.</p>
+</li>
+<li>
+<p>The duration is to be specified in hours e.g. <code>0:30</code> instead of 30min.</p>
 </li>
 </ul>
 </div>
@@ -196,40 +460,31 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>addslot i/1 t/14:00 d/2:00</code></p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>addslot n/Coco t/20-2-2020 13:00 d/1:30</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-slot-code-deleteslot-code"><a class="link" href="#deleting-a-slot-code-deleteslot-code">4.3.2. Deleting a slot: <code>deleteslot</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Deletes the slot from the schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteslot [i/INDEX] [n/PETNAME] t/TIME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>When a pet’s name is used to specify the slot, the pet name is case insensitive. e.g. <code>coco</code> will match <code>Coco</code>.</p>
 </li>
 </ul>
 </div>
@@ -241,34 +496,28 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>deleteslot i/1 t/14:00</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>deleteslot n/Coco t/20-2-2020 13:00</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="edting-a-slot-code-editslot-code"><a class="link" href="#edting-a-slot-code-editslot-code">4.3.3. Edting a slot: <code>editslot</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Edits an existing slot in the schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editslot i/INDEX t/TIME [nt/NEW_TIME][nd/NEW_DURATION]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>At least one of the optional fields must be provided.</p>
 </li>
 </ul>
 </div>
@@ -280,87 +529,146 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p><code>editslot i/1 t/14:00 nt/8:00</code></p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>editslot i/1 t/14:00 nt/19:00 nd/1:30</code></p>
+</li>
+<li>
+<p><code>editslot i/12 t/”20-2-2020 13:00” nd/2:00</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<div class="sect3">
+<h4 id="showing-current-schedule-code-showslots-code"><a class="link" href="#showing-current-schedule-code-showslots-code">4.3.4. Showing current schedule: <code>showslots</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Shows the current schedule of the specified date.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>showslots [t/DATE]</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
-<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p>The date must follow the <code>dd/M/yyyy</code> format.</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p>Any time specified in the date will be ignored, e.g. <code>20-2-2020 14:00</code> will be parsed as <code>20-2-2020</code>.</p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p>If no date is given, defaults to today, determined from system time.</p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-03 13:31:18 UTC</div></div></div></body></html>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>showslots</code><br>
+Returns a table of the bathing time slots for today.</p>
+</li>
+<li>
+<p><code>showslots t/20-2-2020</code><br>
+Returns a table of the bathing time slots on the 20th of Feb.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-all-conflicts-code-conflict-code"><a class="link" href="#showing-all-conflicts-code-conflict-code">4.3.5. Showing all conflicts: <code>conflict</code></a></h4>
+<div class="paragraph">
+<p>Show all the time slots that have multiple showering bookings, ordered bydate.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>conflict</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>conflict</code><br>
+Returns:</p>
+<div class="literalblock">
+<div class="content">
+<pre>23rd Feb 2020 3pm-4pm: pet_name1, pet _name2
+1st June 2020 10am-11am: pet_name3, pet_name4, pet_name 5</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-a-slot-code-findslot-code"><a class="link" href="#searching-a-slot-code-findslot-code">4.3.6. Searching a slot: <code>findslot</code></a></h4>
+<div class="paragraph">
+<p>Shows the time slot that some pet has booked.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findslot PETNAME [PETNAME2]</code></p>
+</div>
+<div class="paragraph">
+<p>Exmaple:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findslot ABC</code><br>
+Returns: <code>ABC has bathing booking at 1st Jan 2021 1700-1800</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="check-slot-availability-code-checkslot-code"><a class="link" href="#check-slot-availability-code-checkslot-code">4.3.7. Check slot availability: <code>checkslot</code></a></h4>
+<div class="paragraph">
+<p>Checks if the bathing space is empty at a given time.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>checkslot DATE TIME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The date must be in <code>DD-MM-YYYY</code> format.</p>
+</li>
+<li>
+<p>The time must be in 24-hour format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>checkslot 01-01-2020 1700</code><br>
+Returns: <code>Bathing space is occupied at 1st Jan 2021 1700 `</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Coming Soon!&trade;</em></p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-03 15:17:18 UTC</div></div></div></body></html>
