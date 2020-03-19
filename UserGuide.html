@@ -28,7 +28,7 @@
 <ul class="sectlevel3">
 <li><a href="#adding-a-pet-code-addpet-code">4.2.1. Adding a pet: <code>addpet</code></a></li>
 <li><a href="#finding-pets-by-names-or-tags-code-findpets-code">4.2.2. Finding pets by names or tags: <code>findpets</code></a></li>
-<li><a href="#tagging-a-pet-code-tagpet-code">4.2.3. Tagging a pet: <code>tagpet</code></a></li>
+<li><a href="#editing-a-pet-code-editpet-code">4.2.3. Editing a pet: <code>editpet</code></a></li>
 <li><a href="#deleting-a-pet-code-deletepet-code">4.2.4. Deleting a pet: <code>deletepet</code></a></li>
 </ul>
 </li>
@@ -102,16 +102,16 @@ e.g. <code>display i</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add pet</strong>: <code>addpet n/NAME a/AGE s/SPECIES b/BREED g/GENDER f/FOOD [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>addpet n/Garfield a/5 s/cat b/ginger tabby g/M t/lazy f/30 t/good for nothing t/lasagna</code></p>
+<p><strong>Add pet</strong>: <code>addpet n/NAME g/GENDER b/DATE OF BIRTH s/SPECIES f/FOOD NAME: AMOUNT [f/FOOD NAME: AMOUNT] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>addpet n/Garfield g/male b/01/01/2019 s/cat tabby t/lazy f/Brand A: 30 t/good for nothing t/lasagna</code></p>
 </li>
 <li>
 <p><strong>Find pet</strong>: <code>findpets [n/NAME]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>findpets n/garfield n/odie t/jon</code></p>
 </li>
 <li>
-<p><strong>Tag pet</strong>: <code>tagpet i/INDEX t/TAG [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>tagpet 2 t/smelly t/noisy t/cuddly</code></p>
+<p><strong>Edit pet</strong>: <code>editpet i/INDEX [n/name] [b/DATE OF BIRTH]  [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>editpet 2 n/garfield t/cuddly</code></p>
 </li>
 <li>
 <p><strong>Delete pet</strong>: <code>deletepet i/INDEX</code><br>
@@ -173,13 +173,13 @@ e.g. <code>deleteslot 2</code></p>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/Some Pet t/lazy</code> or as <code>n/Some Pet</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cute</code>, <code>t/small t/white</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME g/GENDER</code>, <code>G/GENDER n/NAME</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -273,23 +273,23 @@ There is no need to save manually.</p>
 <p>Adds a pet to the pet tracker system.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addpet n/NAME a/AGE s/SPECIES b/BREED g/GENDER f/FOOD [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>addpet n/NAME g/GENDER b/DATE OF BIRTH s/SPECIES f/FOOD : AMOUNT [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The age must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;, denoting how many years old the pet is.</p>
+<p>The date of birth must be in the format of d/M/YYYY, e.g. 01/01/2019, 1/7/2018</p>
 </li>
 <li>
-<p>The gender must be either <code>F</code> or <code>M</code>.</p>
+<p>The gender must be either <code>female</code> or <code>male</code>.</p>
 </li>
 <li>
-<p>Food is specified as a quantity of weekly consumption in an arbitrary unit.</p>
+<p>Food is specified as a type of food complied with quantity of weekly consumption in an arbitrary unit. The food name and amount should be separated by a colon ":". There can be more than 1 types of food for one pet.</p>
 </li>
 <li>
-<p>A pet can have any number of tags (including 0)</p>
+<p>A pet can have any number of tags (including 0). Each tag must be restricted to one word .</p>
 </li>
 </ul>
 </div>
@@ -301,7 +301,7 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addpet n/Garfield a/5 s/cat b/ginger tabby g/M f/30 t/lazy t/good for nothing t/lasagna</code></p>
+<p><code>addpet n/Garfield g/male b/01/01/2019 f/Brand A: 30 t/lazy t/lasagna</code></p>
 </li>
 </ul>
 </div>
@@ -341,12 +341,12 @@ Returns a list of pets, whose names either contain <code>garfield</code> or <cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="tagging-a-pet-code-tagpet-code"><a class="link" href="#tagging-a-pet-code-tagpet-code">4.2.3. Tagging a pet: <code>tagpet</code></a></h4>
+<h4 id="editing-a-pet-code-editpet-code"><a class="link" href="#editing-a-pet-code-editpet-code">4.2.3. Editing a pet: <code>editpet</code></a></h4>
 <div class="paragraph">
-<p>Tags an existing pet in the system.</p>
+<p>Edits any field of an existing pet in the system.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>tagpet i/INDEX t/TAG [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>editpet i/INDEX  [n/NAME] [g/GENDER] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -356,7 +356,7 @@ Returns a list of pets, whose names either contain <code>garfield</code> or <cod
 <p>The index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The existing tags of the pet will be removed, i.e adding of tags is not cumulative.</p>
+<p>The existing field(s) of the pet will be removed, i.e adding of list of food and tags is not cumulative.</p>
 </li>
 <li>
 <p>You can remove all tags of a pet by typing <code>t/</code> without specifying any tags after it.</p>
@@ -372,8 +372,8 @@ Returns a list of pets, whose names either contain <code>garfield</code> or <cod
 <ul>
 <li>
 <p><code>display p</code><br>
-  <code>tagpet 2 t/smelly t/noisy t/cuddly</code><br>
-Overrides the tags of the 2nd pet in the system with 3 tags of “smelly”, “noisy”, “cuddly”.</p>
+  <code>tagpet 2 n/Coco b/02/01/2020 t/cuddly t/grey</code><br>
+Overwrites information of the 2nd pet in the system with name "Coco", date of birth "2 Jan 2020, and 2 tags of “cuddly”, “grey”.</p>
 </li>
 </ul>
 </div>
@@ -657,4 +657,4 @@ Deletes the 2nd slot occupied by <code>Coco</code>.</p>
 <p><em>Coming Soon!&trade;</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-19 12:58:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-19 13:03:29 UTC</div></div></div></body></html>
