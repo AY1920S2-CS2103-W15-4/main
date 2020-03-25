@@ -22,11 +22,12 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#schedule-feature">3.1. Schedule feature</a></li>
-<li><a href="#display-inventory-feature">3.2. Display Inventory feature</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
-<li><a href="#statistics">3.5. Statistics</a></li>
+<li><a href="#display">3.1. Display</a></li>
+<li><a href="#schedule-feature">3.2. Schedule feature</a></li>
+<li><a href="#inventory-feature">3.3. Inventory feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#statistics">3.6. Statistics</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -316,9 +317,131 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.1. Schedule feature</a></h3>
+<h3 id="display"><a class="link" href="#display">3.1. Display</a></h3>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The display mechanism is facilitated by an <code>ObservableList</code> of <code>DisplayItem</code> called <code>filteredDisplayItems</code>, which is an attribute stored in <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Any class that is to be displayed as an item in a list implements the <code>DisplayItem</code> interface. This interface has a single method named <code>getDisplaySystemType</code> which returns the type of system to be displayed. In our program, the <code>Pet</code>, <code>Slot</code> and <code>FoodCollection</code> classes implement this interface.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user opens the app the the 1st time. A few things happen at start-up:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>Model</code> (<code>ModelManager</code>), <code>filteredDisplayItems</code> is created, and is set to bind to <code>filteredPets</code>. This way, <code>filteredDisplayItems</code> contains all the elements of <code>filteredPets</code>, and any changes to <code>filteredPets</code> will also be automatically propogated to <code>filteredDisplayItems</code>.</p>
+</li>
+<li>
+<p>In the <code>MainWindow</code>, a <code>DisplayListPanel</code> and a <code>CalendarPanel</code> are initialized. The <code>DisplayListPanel</code> is created with <code>filteredDisplayItems</code> as its backing list, while the <code>CalendarPanel</code> will be initialized with the <code>List</code> of <code>Slot`s obtained from `logic.getPetTracker().getSlotList()</code>.</p>
+</li>
+<li>
+<p>The <code>resultDisplayPlaceholder</code> component in the <code>MainWindow</code> is set to display the <code>DisplayListPanel</code>. As such, the user sees the list of pets as the initial display.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following ____ diagram summarises Step 1 and shows what happens at initialization: (WIP)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displayDiagram1.png" alt="displayDiagram1">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>display s</code> to have the <strong>s</strong>lots displayed in a list. The <code>display</code> command calls <code>Model#changeDisplaySystem</code>, which causes <code>filteredDisplayItems</code> to be re-binded to <code>filteredSlots</code> instead. Because the display is still making use of <code>DisplayListPanel</code>, no change is made to <code>resultDisplayPlaceholder</code> afterwards.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>display c</code> to have the slots displayed in <strong>c</strong>alendar view. Since <code>filteredDisplayItems</code> is not used for displaying the calendar, it is not changed when the <code>display</code> command calls <code>Model#changeDisplaySystem</code>. Upon receiving back the result of the command in <code>MainWindow</code>, <code>resultDisplayPlaceholder</code> is changed to display the <code>CalendarPanel</code> instead of the <code>DisplayListPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user executes <code>display p</code> to view the list of <strong>p</strong>ets. The <code>display</code> command calls <code>Model#changeDisplaySystem</code>, which causes <code>filteredDisplayItems</code> to re-binded to <code>filteredPets</code>. Since the program should now display a list of items instead of a calendar, upon receiving back the result of the command in <code>MainWindow</code>, <code>resultDisplayPlaceholder</code> is changed to display the <code>DisplayListPanel</code> from <code>CalendarPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following ____ diagram shows how the display operation works: (WIP)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displayDiagram2.png" alt="displayDiagram2">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-wip"><a class="link" href="#design-considerations-wip">3.1.2. Design Considerations (WIP)</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire pet tracker.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have seperate .</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the pet being deleted).</p>
+</li>
+<li>
+<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of pet tracker states.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+</li>
+<li>
+<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedPetTracker</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+</li>
+<li>
+<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.2. Schedule feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The schedule feature uses instances of class <code>Slot</code> to organise bathing schedule for the pets. Each <code>Slot</code> contains a
 starting time of the bath, stored internally as a <code>LocalDateTime</code>, and the duration of the bath stored internally as a
@@ -387,7 +510,7 @@ compares it with <code>getDate()</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-schedule-stores-the-pets-internally"><a class="link" href="#aspect-how-schedule-stores-the-pets-internally">Aspect: How schedule stores the pets internally</a></h5>
 <div class="ulist">
@@ -424,11 +547,11 @@ compares it with <code>getDate()</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-inventory-feature"><a class="link" href="#display-inventory-feature">3.2. Display Inventory feature</a></h3>
+<h3 id="inventory-feature"><a class="link" href="#inventory-feature">3.3. Inventory feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The Display Inventory feature, i.e <code>display i</code> displays a summary of all the food items involved in a pet tracker system.
+<p>The Inventory feature gives a summary of all the food items involved in a pet tracker system.
 It is supported by <code>FoodCollection</code> which resembles a collection of food of the same type and <code>FoodCollectionList</code> which is a list of these collections.
 A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetList</code> for the following reasons:</p>
 </div>
@@ -464,7 +587,7 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-maintaining-the-collection-of-food-in-a-pet-tracker"><a class="link" href="#aspect-maintaining-the-collection-of-food-in-a-pet-tracker">Aspect: Maintaining the collection of food in a pet tracker</a></h5>
 <div class="ulist">
@@ -534,14 +657,14 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -573,13 +696,13 @@ just its size</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="statistics"><a class="link" href="#statistics">3.5. Statistics</a></h3>
+<h3 id="statistics"><a class="link" href="#statistics">3.6. Statistics</a></h3>
 <div class="paragraph">
 <p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
 </div>
@@ -1004,4 +1127,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 05:20:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 06:20:40 UTC</div></div></div></body></html>
