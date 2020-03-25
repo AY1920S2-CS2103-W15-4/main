@@ -22,10 +22,9 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#display-inventory-feature">3.1. Display Inventory feature</a></li>
+<li><a href="#logging">3.2. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -264,29 +263,15 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Pet Tracker data.</p>
+<p>stores the Pet Tracker data. Note that the Pet Tracker keeps track of both the schedule system and the pet system.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Pet&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an <code>ObservableList&lt;Pet&gt;</code>, an <code>ObservableList&lt;Slot&gt;</code>, and an <code>ObservableList&lt;FoodCollection&gt;</code> that are unmodifiable and can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Pet Tracker</code>, which <code>Pet</code> can reference. This would allow <code>Pet Tracker</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Pet</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -329,234 +314,124 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Pet Tracker</
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="display-inventory-feature"><a class="link" href="#display-inventory-feature">3.1. Display Inventory feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedPetTracker</code>.
-It extends <code>PetTracker</code> with an undo/redo history, stored internally as an <code>petTrackerStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>The Display Inventory feature, i.e <code>display i</code> displays a summary of all the food items involved in a pet tracker system.
+It is supported by <code>FoodCollection</code> which resembles a collection of food of the same type and <code>FoodCollectionList</code> which is a list of these collections.
+A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetList</code> for the following reasons:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedPetTracker#commit()</code>&#8201;&#8212;&#8201;Saves the current pet tracker state in its history.</p>
+<p>The list of <code>FoodCollection</code> items associated with a <code>UniquePetList</code> can be directly derived from the <code>UniquePetList</code> itself.</p>
 </li>
 <li>
-<p><code>VersionedPetTracker#undo()</code>&#8201;&#8212;&#8201;Restores the previous pet tracker state from its history.</p>
-</li>
-<li>
-<p><code>VersionedPetTracker#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone pet tracker state from its history.</p>
+<p>Changes in FoodCollection occurs only if there is a change in <code>UniquePetList#internalList</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitPetTracker()</code>, <code>Model#undoPetTracker()</code> and <code>Model#redoPetTracker()</code> respectively.</p>
+<p>Data stored in <code>FoodCollectionList</code> is exposed to <code>ModelManager</code> through <code>UniquePetList</code> and <code>PetTracker</code> as an unmodifiable <code>ObservableList&lt;FoodCollection&gt;</code>.
+<code>ModelManager</code> then passes the list of <code>FoodCollection</code> to ui for display as a list of <code>DisplayItem</code> when <code>display i</code> is called.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>The following shows a typical usage scenario that involves the Display Inventory feature.</p>
 </div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedPetTracker</code> will be initialized with the initial pet tracker state, and the <code>currentStatePointer</code> pointing to that single pet tracker state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th pet in the pet tracker. The <code>delete</code> command calls <code>Model#commitPetTracker()</code>, causing the modified state of the pet tracker after the <code>delete 5</code> command executes to be saved in the <code>petTrackerStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted pet tracker state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new pet. The <code>add</code> command also calls <code>Model#commitPetTracker()</code>, causing another modified pet tracker state to be saved into the <code>petTrackerStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitPetTracker()</code>, so the pet tracker state will not be saved into the <code>petTrackerStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the pet was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoPetTracker()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous pet tracker state, and restores the pet tracker to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial pet tracker state, then there are no previous pet tracker states to restore. The <code>undo</code> command uses <code>Model#canUndoPetTracker()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoPetTracker()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the pet tracker to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>petTrackerStateList.size() - 1</code>, pointing to the latest pet tracker state, then there are no undone pet tracker states to restore. The <code>redo</code> command uses <code>Model#canRedoPetTracker()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the pet tracker, such as <code>list</code>, will usually not call <code>Model#commitPetTracker()</code>, <code>Model#undoPetTracker()</code> or <code>Model#redoPetTracker()</code>. Thus, the <code>petTrackerStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitPetTracker()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>petTrackerStateList</code>, all pet tracker states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user launches the application. A <code>UniquePetList</code> is initialized in <code>PetTracker</code>, upon which a <code>FoodCollectionList</code> item is created to store the food data of the pets in the list(if it is an empty list, <code>FoodCollectionList</code> is also stores an empty list of <code>FoodCollection</code>)</p>
+</li>
+<li>
+<p>Step 2: The user executes 'display i' command. The <code>display</code> command calls Model#ChangeDisplaySystem() and the <code>i</code> display type determines the displayed list is switched to <code>ObservableList&lt;FoodCollection&gt;</code>. <code>Model$getFilteredDisplayList()</code> then acquires the list and sends it to Ui unit for display.</p>
+</li>
+<li>
+<p>Step 3: The user inputs a command that modifies the <code>UniquePetList</code>, e.g 'editpet 1 f/catfood:100'. <code>UniquePetList$internalList</code> is an instance of <code>ObservableList&lt;Pet&gt;</code>. Thus when it is modified, a <code>ListChangeListener&lt;Pet&gt;</code> is woken up and it calls <code>UniquePetList$updateFoodCollectionList()</code> to update the <code>FoodCollectionList</code> according to the modified Pet list.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-maintaining-the-collection-of-food-in-a-pet-tracker"><a class="link" href="#aspect-maintaining-the-collection-of-food-in-a-pet-tracker">Aspect: Maintaining the collection of food in a pet tracker</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire pet tracker.</p>
+<p>Alternative 1(current choice): Maintains the list as an attribute of <code>UniquePetList</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easier to initialize and update the list.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Less extendability. Adding additional food items in inventory(independent of pet list) is difficult.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p>Alternative 2: Maintains a list of food collections separate from <code>UniquePetList</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the pet being deleted).</p>
+<p>Pros: Higher Extendability that supports more independent operations of FoodCollection List.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of pet tracker states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedPetTracker</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: More difficult to constantly update and maintain the food collection list should food list changes.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-updating-the-collection-of-food-when-pet-list-is-modified"><a class="link" href="#aspect-updating-the-collection-of-food-when-pet-list-is-modified">3.1.3. Aspect: Updating the collection of food when pet list is modified.</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(current choice): Replace the entire list by a new food collection list created from the updated pet list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and no adaptation is required for different types of modification of pet list.</p>
+</li>
+<li>
+<p>Cons: Computationally intensive when there is a huge pet list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Modify <code>FoodCollection</code> affected by the command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less computationally intensive and more responsive given a large database.</p>
+</li>
+<li>
+<p>Cons: Adaptations for each pet related commands is required since the food list can be affected in different ways.(e.g addition, modification, deletion)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -587,7 +462,7 @@ If the <code>currentStatePointer</code> is at index <code>petTrackerStateList.si
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -986,4 +861,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 02:53:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 03:04:02 UTC</div></div></div></body></html>
