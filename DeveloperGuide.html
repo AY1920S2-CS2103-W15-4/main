@@ -22,10 +22,11 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#display-inventory-feature">3.1. Display Inventory feature</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#statistics">3.4. Statistics</a></li>
+<li><a href="#schedule-feature">3.1. Schedule feature</a></li>
+<li><a href="#display-inventory-feature">3.2. Display Inventory feature</a></li>
+<li><a href="#logging">3.3. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#statistics">3.5. Statistics</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -315,9 +316,111 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="display-inventory-feature"><a class="link" href="#display-inventory-feature">3.1. Display Inventory feature</a></h3>
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.1. Schedule feature</a></h3>
+<div class="paragraph">
+<p>The schedule feature uses instances of class <code>Slot</code> to organise bathing schedule for the pets. Each <code>Slot</code> contains a
+starting time of the bath, stored internally as a <code>LocalDateTime</code>, and the duration of the bath stored internally as a
+<code>Duration</code>. It stores a reference to the <code>Pet</code> in the <code>ModelManager</code> as specified by the user.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the <code>Schedule</code> mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application with some pets stored (<code>Garfield</code>, for instance). <code>ObservableList&lt;Slot&gt;</code>
+in <code>Schedule</code> is currently empty.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>addslot n/Garfield t/1/4/2020 1200 d/120</code> command to create a <code>Slot</code> for <code>Garfield</code>.
+The <code>AddSlotParser</code> calls <code>parsePet()</code> in <code>SlotParserUtil</code>, which then takes in the <code>Model</code> passed in to find a
+reference for the specific <code>Pet</code> with <code>Model.getPet()</code>. Prior to this stage, if the name string is invalid, a
+<code>ParseException(MESSAGE_INVALID_PETNAME)</code> will be thrown. Or the program cannot find the <code>Pet</code> in the model, a
+<code>ParseException(MESSAGE_PET_DOES_NOT_EXIST)</code> will be thrown. This ensures that every slot created actually points to an
+existing <code>Pet</code> found in <code>PetTracker</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>parsePet()</code> fails its execution, no new <code>Slot</code> is created.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. New <code>Slot</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now decides that this exact slot should be occupied by another pet, and decides to edit it, executing
+the <code>editslot</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>SlotParserUtil</code> is used again to create a reference to a pet in the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. The user now decides that they need to see slots occupied by a particular pet on a particular date, executing
+the <code>findslots n/Garfield t/1/4/2020</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. The <code>FindSlotCommand</code> reduces the two predicates* and pass it to <code>ModelManager</code> to create a filtered list of
+slots.</p>
+</div>
+<div class="paragraph">
+<p>*The <code>FindSlotCommand</code> uses the following classes which both inherit <code>Predicate&lt;Slot&gt;</code> to search for the user specified
+slots:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SlotPetNamePredicate()</code>&#8201;&#8212;&#8201;Internally stores the <code>Name</code> to search for, and compares it with
+<code>getPet().getName().fullName</code>.</p>
+</li>
+<li>
+<p><code>SlotDateTimePredicate()</code>&#8201;&#8212;&#8201;Internally stores the <code>LocalDateTime</code> to search for (Timing will be ignored), and
+compares it with <code>getDate()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-schedule-stores-the-pets-internally"><a class="link" href="#aspect-how-schedule-stores-the-pets-internally">Aspect: How schedule stores the pets internally</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Makes a reference to the the memory address in <code>ModelManager</code> .</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: When the pet is edited, the slot is also updated.</p>
+</li>
+<li>
+<p>Cons: Hard to implement and test.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Simply create a new Pet.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and test (A refactor of <code>Pet</code>), low coupling with <code>Model</code>.</p>
+</li>
+<li>
+<p>Cons: Does not update when original pet is edited, which is not something the user will expect.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-inventory-feature"><a class="link" href="#display-inventory-feature">3.2. Display Inventory feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Display Inventory feature, i.e <code>display i</code> displays a summary of all the food items involved in a pet tracker system.
 It is supported by <code>FoodCollection</code> which resembles a collection of food of the same type and <code>FoodCollectionList</code> which is a list of these collections.
@@ -355,7 +458,7 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-maintaining-the-collection-of-food-in-a-pet-tracker"><a class="link" href="#aspect-maintaining-the-collection-of-food-in-a-pet-tracker">Aspect: Maintaining the collection of food in a pet tracker</a></h5>
 <div class="ulist">
@@ -391,7 +494,7 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect3">
-<h4 id="aspect-updating-the-collection-of-food-when-pet-list-is-modified"><a class="link" href="#aspect-updating-the-collection-of-food-when-pet-list-is-modified">3.1.3. Aspect: Updating the collection of food when pet list is modified.</a></h4>
+<h4 id="aspect-updating-the-collection-of-food-when-pet-list-is-modified"><a class="link" href="#aspect-updating-the-collection-of-food-when-pet-list-is-modified">3.2.3. Aspect: Updating the collection of food when pet list is modified.</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -425,14 +528,14 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -457,19 +560,20 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 <p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
 </li>
 <li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of
+just its size</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="statistics"><a class="link" href="#statistics">3.4. Statistics</a></h3>
+<h3 id="statistics"><a class="link" href="#statistics">3.5. Statistics</a></h3>
 <div class="paragraph">
 <p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
 </div>
@@ -894,4 +998,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 03:52:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 04:25:23 UTC</div></div></div></body></html>
