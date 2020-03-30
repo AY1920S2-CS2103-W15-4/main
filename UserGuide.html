@@ -18,10 +18,9 @@
 <ul class="sectlevel3">
 <li><a href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></li>
-<li><a href="#navigating-to-previous-next-page-code-pp-code-code-np-code">4.1.3. Navigating to previous / next page: <code>pp</code> / <code>np</code></a></li>
-<li><a href="#changing-the-system-to-display-code-display-system-code">4.1.4. Changing the system to display: <code>display SYSTEM</code></a></li>
-<li><a href="#saving-the-data">4.1.5. Saving the data</a></li>
-<li><a href="#statistics-code-coming-in-v2-0-code">4.1.6. Statistics <code>[coming in v2.0]</code></a></li>
+<li><a href="#changing-the-system-to-display-code-display-system-code">4.1.3. Changing the system to display: <code>display SYSTEM</code></a></li>
+<li><a href="#saving-the-data">4.1.4. Saving the data</a></li>
+<li><a href="#statistics">4.1.5. Statistics</a></li>
 </ul>
 </li>
 <li><a href="#pet-tracker-system">4.2. Pet Tracker System</a>
@@ -37,9 +36,8 @@
 <li><a href="#adding-a-slot-code-addslot-code">4.3.1. Adding a slot: <code>addslot</code></a></li>
 <li><a href="#finding-slots-code-findslots-code">4.3.2. Finding slots: <code>findslots</code></a></li>
 <li><a href="#edting-a-slot-code-editslot-code">4.3.3. Edting a slot: <code>editslot</code></a></li>
-<li><a href="#checking-slot-availability-code-checkslot-code">4.3.4. Checking slot availability: <code>checkslot</code></a></li>
-<li><a href="#deleting-a-slot-code-deleteslot-code">4.3.5. Deleting a slot: <code>deleteslot</code></a></li>
-<li><a href="#showing-all-conflicts-code-conflict-code">4.3.6. Showing all conflicts: <code>conflict</code></a></li>
+<li><a href="#deleting-a-slot-code-deleteslot-code">4.3.4. Deleting a slot: <code>deleteslot</code></a></li>
+<li><a href="#showing-all-conflicts-code-conflicts-code">4.3.5. Showing all conflicts: <code>conflicts</code></a></li>
 </ul>
 </li>
 </ul>
@@ -86,13 +84,13 @@
 <p><strong>Exit</strong>: <code>exit</code></p>
 </li>
 <li>
-<p><strong>Navigate</strong>: <code>pp</code> / <code>np</code></p>
-</li>
-<li>
 <p><strong>Display</strong>: <code>display SYSTEM</code><br>
 e.g. <code>display p</code><br>
 e.g. <code>display s</code><br>
 e.g. <code>display i</code></p>
+</li>
+<li>
+<p><strong>Statistics</strong>: <code>stats</code>+</p>
 </li>
 </ul>
 </div>
@@ -142,15 +140,11 @@ e.g. <code>editslot 3 d/45</code><br>
 e.g. <code>editslot 12 n/Brian Griffin</code></p>
 </li>
 <li>
-<p><strong>Check slot</strong>: <code>checkslot t/DATETIME</code><br>
-e.g. <code>checkslot 17/4/2020 1700</code></p>
-</li>
-<li>
 <p><strong>Delete slot</strong>: <code>deleteslot i/INDEX</code><br>
 e.g. <code>deleteslot 2</code></p>
 </li>
 <li>
-<p><strong>Show conflicts</strong>: <code>conflict</code></p>
+<p><strong>Show conflicts</strong>: <code>conflicts</code></p>
 </li>
 </ul>
 </div>
@@ -203,17 +197,7 @@ e.g. <code>deleteslot 2</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="navigating-to-previous-next-page-code-pp-code-code-np-code"><a class="link" href="#navigating-to-previous-next-page-code-pp-code-code-np-code">4.1.3. Navigating to previous / next page: <code>pp</code> / <code>np</code></a></h4>
-<div class="paragraph">
-<p>Goes to the previous / next page of list of results of a command, when the list returned is too large and has to split across multiple pages.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>pp</code>: Goes to the previous page of the list<br>
-Format: <code>np</code>: Goes to the next page of the list</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="changing-the-system-to-display-code-display-system-code"><a class="link" href="#changing-the-system-to-display-code-display-system-code">4.1.4. Changing the system to display: <code>display SYSTEM</code></a></h4>
+<h4 id="changing-the-system-to-display-code-display-system-code"><a class="link" href="#changing-the-system-to-display-code-display-system-code">4.1.3. Changing the system to display: <code>display SYSTEM</code></a></h4>
 <div class="paragraph">
 <p>Changes the display board to show the specified system.</p>
 </div>
@@ -252,16 +236,33 @@ Displays a list of all pet food (inventory) and the needed amount per week.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.1.5. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.1.4. Saving the data</a></h4>
 <div class="paragraph">
 <p>All data is saved to the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="statistics-code-coming-in-v2-0-code"><a class="link" href="#statistics-code-coming-in-v2-0-code">4.1.6. Statistics <code>[coming in v2.0]</code></a></h4>
+<h4 id="statistics"><a class="link" href="#statistics">4.1.5. Statistics</a></h4>
 <div class="paragraph">
-<p>Provides statistics about the pet tracker and schedule system, such as total number of pets, how many time slots are in conflict, etc.</p>
+<p>Provides statistics about the pet tracker, schedule system, and inventory.<br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>There is a pie chart representing the ratio of different pet species.<br></p>
+</li>
+<li>
+<p>A timetable that shows an overall schedule for recent 3 days.<br></p>
+</li>
+<li>
+<p>A bar chart that shows the weekly consumption of different pet food.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -467,7 +468,7 @@ Deletes the 2nd pet in the results of the <code>find garfield</code> command.</p
 <p>Finds slots occupied by a pet matching the specified name, or slots occupied on the given date, or both.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>findslots [n/PETNAME] [t/DATE]</code></p>
+<p>Format: <code>findslots [n/PETNAME] [t/DATE [MORE DATES]]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -480,14 +481,7 @@ Deletes the 2nd pet in the results of the <code>find garfield</code> command.</p
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>The date must be in <code>dd/M/yyyy HHmm</code> format.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Any time specified in the date will be ignored, e.g. <code>20/2/2020 1400</code> will be parsed as <code>20/2/2020</code>.</p>
-</li>
-</ul>
-</div>
+<p>The date must be in <code>dd/M/yyyy</code> format.</p>
 </li>
 </ul>
 </div>
@@ -503,8 +497,8 @@ Deletes the 2nd pet in the results of the <code>find garfield</code> command.</p
 Displays the slots occupied by <code>Brian Griffin</code>. Note that slots occupied by <code>Griffin</code> or <code>brian griffin</code> will not be returned.</p>
 </li>
 <li>
-<p><code>findslots t/20/2/2020</code><br>
-Displays the occupied slots on <code>20/2/2020</code>.</p>
+<p><code>findslots t/20/2/2020 1/3/2021</code><br>
+Displays the occupied slots on <code>20/2/2020</code> and <code>1/3/2021</code>.</p>
 </li>
 <li>
 <p><code>findpets n/Coco t/16/11/2020</code><br>
@@ -562,47 +556,7 @@ Edits the pet occupying the 12th slot to be <code>Brian Griffin</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="checking-slot-availability-code-checkslot-code"><a class="link" href="#checking-slot-availability-code-checkslot-code">4.3.4. Checking slot availability: <code>checkslot</code></a></h4>
-<div class="paragraph">
-<p>Informs the user which pet(s), if any, is/are occupying the slot at the specified datetime.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>checkslot t/DATETIME</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The datetime must be in <code>dd/M/yyyy</code> format.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The time must be in 24-hour format.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>checkslot 17/4/2020 1700</code><br>
-If the slot is occupied by Coco, returns: <code>Coco is occupying the slot at 17/4/2020 1700.</code><br>
-If the slot is occupied by both Coco and Garfield (conflict), returns: <code>Coco and Garfield are occupying the slot at 17/4/2020 1700.</code><br>
-If the slot is unoccupied, returns: <code>Unoccupied slot at 17/4/2020 1700.</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-slot-code-deleteslot-code"><a class="link" href="#deleting-a-slot-code-deleteslot-code">4.3.5. Deleting a slot: <code>deleteslot</code></a></h4>
+<h4 id="deleting-a-slot-code-deleteslot-code"><a class="link" href="#deleting-a-slot-code-deleteslot-code">4.3.4. Deleting a slot: <code>deleteslot</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified slot from the schedule.</p>
 </div>
@@ -639,12 +593,12 @@ Deletes the 2nd slot occupied by <code>Coco</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="showing-all-conflicts-code-conflict-code"><a class="link" href="#showing-all-conflicts-code-conflict-code">4.3.6. Showing all conflicts: <code>conflict</code></a></h4>
+<h4 id="showing-all-conflicts-code-conflicts-code"><a class="link" href="#showing-all-conflicts-code-conflicts-code">4.3.5. Showing all conflicts: <code>conflicts</code></a></h4>
 <div class="paragraph">
 <p>Displays the slots that have a conflict, i.e., an overlap in time with another occupied slot.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>conflict</code></p>
+<p>Format: <code>conflicts</code></p>
 </div>
 </div>
 </div>
@@ -657,4 +611,4 @@ Deletes the 2nd slot occupied by <code>Coco</code>.</p>
 <p><em>Coming Soon!&trade;</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-29 15:57:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-30 07:15:58 UTC</div></div></div></body></html>
