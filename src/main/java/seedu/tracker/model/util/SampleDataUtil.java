@@ -1,0 +1,71 @@
+package seedu.tracker.model.util;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import seedu.tracker.model.PetTracker;
+import seedu.tracker.model.ReadOnlyPetTracker;
+import seedu.tracker.model.pet.DateOfBirth;
+import seedu.tracker.model.pet.Food;
+import seedu.tracker.model.pet.Gender;
+import seedu.tracker.model.pet.Name;
+import seedu.tracker.model.pet.Pet;
+import seedu.tracker.model.pet.Species;
+import seedu.tracker.model.tag.Tag;
+
+
+
+/**
+ * Contains utility methods for populating {@code Pet Tracker} with sample data.
+ */
+public class SampleDataUtil {
+    public static Pet[] getSamplePets() {
+        return new Pet[] {
+            new Pet(new Name("Alex"), Gender.MALE, new DateOfBirth("1/12/2005"), new Species("cat"),
+                    getFoodSet("cat food:10"), getTagSet("dumb")),
+            new Pet(new Name("Bob"), Gender.FEMALE, new DateOfBirth("10/12/2001"), new Species("cat"),
+                    getFoodSet("cat food:10"), getTagSet("tall")),
+            new Pet(new Name("Cindy"), Gender.MALE, new DateOfBirth("2/10/2019"), new Species("cat"),
+                    getFoodSet("cat food:10"), getTagSet("small")),
+            new Pet(new Name("David"), Gender.FEMALE, new DateOfBirth("4/12/2017"), new Species("dog"),
+                    getFoodSet("dog food:10"), getTagSet("angry")),
+            new Pet(new Name("Elsa"), Gender.FEMALE, new DateOfBirth("6/6/2019"), new Species("dog"),
+                    getFoodSet("dog food:10"), getTagSet("lazy")),
+            new Pet(new Name("Foo"), Gender.MALE, new DateOfBirth("1/1/2011"), new Species("dog"),
+                    getFoodSet("dog food:10"), getTagSet("new"))};
+    }
+
+
+    public static ReadOnlyPetTracker getSamplePetTracker() {
+        PetTracker samplePt = new PetTracker();
+        for (Pet samplePet : getSamplePets()) {
+            samplePt.addPet(samplePet);
+        }
+        return samplePt;
+    }
+
+    /**
+     * Returns a tag set containing the list of strings given.
+     */
+    public static Set<Tag> getTagSet(String... strings) {
+        return Arrays.stream(strings)
+                .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a food set containing the list of strings given.
+     */
+    public static Set<Food> getFoodSet(String... strings) {
+        Set<Food> set = new HashSet<>();
+        for (String t : strings) {
+            String[] temp = t.split(":");
+            Food food = new Food(temp[0], Integer.parseInt(temp[1]));
+            set.add(food);
+        }
+        return set;
+    }
+
+}
