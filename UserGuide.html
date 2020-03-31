@@ -322,7 +322,7 @@ Returns a list of pets, whose names either contain <code>garfield</code> or <cod
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
+<p>If the app is displaying pets, the index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole pet list.</p>
 </li>
 <li>
 <p>The existing field(s) of the pet will be removed, i.e adding of list of food and tags is not cumulative.</p>
@@ -352,6 +352,11 @@ Overwrites information of the 2nd pet in the system with name "Coco", date of bi
   <code>editpet 2 n/Coco</code><br>
 Overwrites the name of the 2nd pet in the results of <code>findpets garfield</code> to "Coco"</p>
 </li>
+<li>
+<p><code>display s</code><br>
+<code>editpet 1 n/garfield</code>
+Overwrites name of the 1st pet in the whole pet list to be "Garfield".</p>
+</li>
 </ul>
 </div>
 </div>
@@ -368,7 +373,7 @@ Overwrites the name of the 2nd pet in the results of <code>findpets garfield</co
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
+<p>If the app is displaying pets, the index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole pet list.</p>
 </li>
 </ul>
 </div>
@@ -388,6 +393,11 @@ Deletes the 2nd pet in the system.</p>
 <p><code>findpets n/garfield</code><br>
   <code>deletepet 2</code><br>
 Deletes the 2nd pet in the results of the <code>findpets garfield</code> command.</p>
+</li>
+<li>
+<p><code>display i</code><br>
+<code>deletepet 2</code>
+Deletes 2nd pet in the whole pet list.</p>
 </li>
 </ul>
 </div>
@@ -496,7 +506,7 @@ Displays the slots occupied by <code>Coco</code> on <code>16/11/2020</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the displayed schedule, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203;</p>
+<p>If the app is displaying schedule, the index refers to the index number shown in the displayed schedule, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole slots list.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -517,7 +527,8 @@ Displays the slots occupied by <code>Coco</code> on <code>16/11/2020</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editslot 1 t/16/11/2020 1300 d/120</code><br>
+<p><code>display s</code><br>
+<code>editslot 1 t/16/11/2020 1300 d/120</code><br>
 Edits the datetime and duration of the 1st slot to be <code>16/11/2020 1300</code>, and <code>120</code> minutes respectively.</p>
 </li>
 <li>
@@ -526,7 +537,8 @@ Edits the datetime and duration of the 1st slot to be <code>16/11/2020 1300</cod
 Edits the duration of the 3rd slot in the search result to be <code>45</code> minutes.</p>
 </li>
 <li>
-<p><code>editslot 12 n/Brian Griffin</code><br>
+<p><code>display p</code><br>
+<code>editslot 12 n/Brian Griffin</code><br>
 Edits the pet occupying the 12th slot to be <code>Brian Griffin</code>.</p>
 </li>
 </ul>
@@ -545,7 +557,7 @@ Edits the pet occupying the 12th slot to be <code>Brian Griffin</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the displayed schedule, and must be a positive integer, e.g. 1, 2, 3, …​</p>
+<p>If the app is displaying schedule, the index refers to the index number shown in the displayed schedule, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole slots list.</p>
 </li>
 </ul>
 </div>
@@ -565,6 +577,11 @@ Deletes the 2nd slot in the schedule.</p>
 <p><code>findslots n/Coco</code><br>
 <code>deleteslot 2</code><br>
 Deletes the 2nd slot occupied by <code>Coco</code>.</p>
+</li>
+<li>
+<p><code>display i</code><br>
+<code>deleteslot 2</code><br>
+Deletes the 2nd slot in the schedule.</p>
 </li>
 </ul>
 </div>
@@ -674,4 +691,4 @@ e.g. <code>deleteslot 2</code></p>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Pet Shop Helper folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 12:23:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 14:11:28 UTC</div></div></div></body></html>
