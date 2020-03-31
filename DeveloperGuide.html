@@ -150,13 +150,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>deletepet 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>deletepet 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -225,13 +225,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("deletepet 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>deletepet 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -240,7 +240,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>DeletePetCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -365,75 +365,6 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="imageblock">
 <div class="content">
 <img src="images/displayDiagram2.png" alt="displayDiagram2">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-wip"><a class="link" href="#design-considerations-wip">3.1.2. Design Considerations (WIP)</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire pet tracker.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have seperate .</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the pet being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of pet tracker states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedPetTracker</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -953,13 +884,13 @@ just its size</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to show bathing schedule</p>
+<p>User requests to show schedule</p>
 </li>
 <li>
-<p>PSH shows bathing schedule of that day</p>
+<p>PSH shows  schedule of that day</p>
 </li>
 <li>
-<p>User requests of delete a bathing slot at a specified timing</p>
+<p>User requests of delete a slot at a specified timing</p>
 </li>
 <li>
 <p>PSH deletes the slot</p>
@@ -1062,7 +993,7 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample pets. The window size may not be optimum.</p>
+Expected: Shows the GUI with a set of sample pets and slots. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
@@ -1092,22 +1023,22 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a pet while all pets are listed</p>
+<p>Deleting a pet while all pets are displayed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all pets using the <code>list</code> command. Multiple pets in the list.</p>
+<p>Prerequisites: Display all pets using the <code>display p</code> command. Multiple pets in the display.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
+<p>Test case: <code>deletepet 1</code><br>
 Expected: First pet is deleted from the list. Details of the deleted pet shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
+<p>Test case: <code>deletepet 0</code><br>
 Expected: No pet is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>deletepet</code>, <code>deletepet x</code> (where x is larger than the list size) <em>{give more}</em><br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1140,4 +1071,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 14:11:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 14:22:08 UTC</div></div></div></body></html>
