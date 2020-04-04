@@ -34,8 +34,8 @@
 <li><a href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></li>
 <li><a href="#changing-the-display-code-display-code">4.1.3. Changing the display: <code>display</code></a></li>
-<li><a href="#backing-up-data-code-backup-code">4.1.4. Backing up data: <code>backup</code></a></li>
-<li><a href="#loading-backup-data-code-load-code">4.1.5. Loading backup data: <code>load</code></a></li>
+<li><a href="#saving-the-data-code-backup-code">4.1.4. Saving the data: <code>backup</code></a></li>
+<li><a href="#retrieving-data-code-load-code">4.1.5. Retrieving data: <code>load</code></a></li>
 <li><a href="#statistics-code-stats-code">4.1.6. Statistics: <code>stats</code></a></li>
 </ul>
 </li>
@@ -279,29 +279,46 @@ Displays a list of all pet food (<strong><em>i</em></strong>nventory) and the ne
 </div>
 </div>
 <div class="sect3">
-<h4 id="backing-up-data-code-backup-code"><a class="link" href="#backing-up-data-code-backup-code">4.1.4. Backing up data: <code>backup</code></a></h4>
+<h4 id="saving-the-data-code-backup-code"><a class="link" href="#saving-the-data-code-backup-code">4.1.4. Saving the data: <code>backup</code></a></h4>
 <div class="paragraph">
-<p>Saves the current state of the pet tracker in a separate file as back up.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>backup</code></p>
+<p>All data is saved to the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.<br>
+However, it is possible to save a separate backup file through the <code>backup</code> command.<br>
+The file name is a timestamp in the format "yyyyMMdd_HH_mm_ss".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="loading-backup-data-code-load-code"><a class="link" href="#loading-backup-data-code-load-code">4.1.5. Loading backup data: <code>load</code></a></h4>
+<h4 id="retrieving-data-code-load-code"><a class="link" href="#retrieving-data-code-load-code">4.1.5. Retrieving data: <code>load</code></a></h4>
 <div class="paragraph">
-<p>Loads a state of a pet tracker from a file.</p>
+<p>Loads the specified file from the hard disk.<br>
+Format: <code>load FILE_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Loads the file with the specified <code>FILE_NAME</code>.</p>
+</li>
+<li>
+<p>The file name <strong>must be a valid file name under the OS</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>load FILE_NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>load 20200402_21_54_52</code></p>
+<p><code>load 20200402_21_54_52</code><br>
+Loads the file 20200402_21_54_52.json from the hard disk.</p>
+</li>
+<li>
+<p><code>load pettracker</code><br>
+Loads the file pettracker.json from the hard disk.</p>
 </li>
 </ul>
 </div>
@@ -809,4 +826,4 @@ e.g. <code>deleteslot 2</code></p>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Pet Shop Helper folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 14:00:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 04:02:12 UTC</div></div></div></body></html>

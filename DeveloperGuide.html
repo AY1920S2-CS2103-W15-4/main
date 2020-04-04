@@ -84,7 +84,7 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -183,7 +183,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 6. Structure of the DisplayList Component in UI</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> class that is made up of parts which can be classified broadly into 2 groups:</p>
@@ -202,7 +202,7 @@ The following class plays an important role at the architecture level:</p>
 <p>All the UI classes, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a>.</p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>In addition, each UI part has been styled using CSS. The custom CSS styling rules are defined in multiple CSS stylesheets, which can be found in the <code>src/main/resources/view/stylesheets</code> folder.</p>
@@ -234,7 +234,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -286,7 +286,7 @@ The lifeline for <code>DeletePetCommandParser</code> should end at the destroy m
 <div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -317,7 +317,7 @@ The lifeline for <code>DeletePetCommandParser</code> should end at the destroy m
 <div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103-W15-4/main/tree/master/src/main/java/clzzz/helper/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -418,7 +418,7 @@ in <code>Schedule</code> is currently empty.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>addslot n/Garfield t/1/4/2020 1200 d/120</code> command to create a <code>Slot</code> for <code>Garfield</code>.
-The <code>AddSlotParser</code> calls <code>parsePet()</code> in <code>SlotParserUtil</code>, which then takes in the <code>Model</code> passed in to find a
+The <code>AddSlotCommandParser</code> calls <code>parsePet()</code> in <code>SlotParserUtil</code>, which then takes in the <code>Model</code> passed in to find a
 reference for the specific <code>Pet</code> with <code>Model.getPet()</code>. Prior to this stage, if the name string is invalid, a
 <code>ParseException(MESSAGE_INVALID_PETNAME)</code> will be thrown. Or the program cannot find the <code>Pet</code> in the model, a
 <code>ParseException(MESSAGE_PET_DOES_NOT_EXIST)</code> will be thrown. This ensures that every slot created actually points to an
@@ -1102,4 +1102,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 14:00:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 04:02:12 UTC</div></div></div></body></html>
