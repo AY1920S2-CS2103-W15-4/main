@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>John Doe - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>John Doe - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pet Store Helper(PSH) is a desktop application used for pet store owners to manage different aspects of their pet store including pet logging, scheduling and inventory management. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10kLOC.
+== Summary of contributions</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the inventory display system</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to view the summary of weekly food types and amounts required to maintain the pets in the store.</p>
+</li>
+<li>
+<p>Justification: This feature improves the usefulness of the product for pet store owners significantly as it helps the user to visualize, understand and organize food consumptions in the pet shop.</p>
+</li>
+<li>
+<p>Highlights: This enhancement uses a split screen which led to the redesign of the UI component. A major challenge tackled was the synchronization of data of the Inventory system with the Pet system, which required an in-depth analysis of design alternatives of the data model.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a feature where users can click on each food item in the inventory to view the breakdown of food amounts by pet names.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contribution to Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintained the Model component(2.4) of the Developer Guide.</p>
+</li>
+<li>
+<p>Maintained Inventory feature(3.3) of Developer Guide.</p>
+</li>
+<li>
+<p>Compiled and edited the materials for the Final Demo.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored Model package of AB3 for the use of PSH</p>
+</li>
+<li>
+<p>In charge of resolving major integration issues at the end of the morphing phase.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Design-Model"><a class="link" href="#Design-Model">Model component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagram.png" alt="ModelClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Model Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/clzzz/helper/model/Model.java"><code>Model.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+</li>
+<li>
+<p>stores the Pet Tracker data. Note that the Pet Tracker keeps track of both the schedule system and the pet system.</p>
+</li>
+<li>
+<p>exposes an <code>ObservableList&lt;Pet&gt;</code>, an <code>ObservableList&lt;Slot&gt;</code>, and an <code>ObservableList&lt;FoodCollection&gt;</code> that are unmodifiable and can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inventory-feature"><a class="link" href="#inventory-feature">Inventory feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The Inventory feature gives a summary of all the food items involved in a pet tracker system.
+It is supported by <code>FoodCollection</code> which resembles a collection of food of the same type and <code>FoodCollectionList</code> which is a list of these collections.
+A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetList</code> for the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The list of <code>FoodCollection</code> items associated with a <code>UniquePetList</code> can be directly derived from the <code>UniquePetList</code> itself.</p>
+</li>
+<li>
+<p>Changes in FoodCollection occurs only if there is a change in <code>UniquePetList#internalList</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Data stored in <code>FoodCollectionList</code> is exposed to <code>ModelManager</code> through <code>UniquePetList</code> and <code>PetTracker</code> as an unmodifiable <code>ObservableList&lt;FoodCollection&gt;</code>.
+<code>ModelManager</code> then passes the list of <code>FoodCollection</code> to ui for display as a list of <code>DisplayItem</code> when <code>display i</code> is called.</p>
+</div>
+<div class="paragraph">
+<p>The following shows a typical usage scenario that involves the Display Inventory feature.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user launches the application. A <code>UniquePetList</code> is initialized in <code>PetTracker</code>, upon which a <code>FoodCollectionList</code> item is created to store the food data of the pets in the list(if it is an empty list, <code>FoodCollectionList</code> is also stores an empty list of <code>FoodCollection</code>)</p>
+</li>
+<li>
+<p>Step 2: The user executes 'display i' command. The <code>display</code> command calls Model#ChangeDisplaySystem() and the <code>i</code> display type determines the displayed list is switched to <code>ObservableList&lt;FoodCollection&gt;</code>. <code>Model$getFilteredDisplayList()</code> then acquires the list and sends it to Ui unit for display.</p>
+</li>
+<li>
+<p>Step 3: The user inputs a command that modifies the <code>UniquePetList</code>, e.g 'editpet 1 f/catfood:100'. <code>UniquePetList$internalList</code> is an instance of <code>ObservableList&lt;Pet&gt;</code>. Thus when it is modified, a <code>ListChangeListener&lt;Pet&gt;</code> is woken up and it calls <code>UniquePetList$updateFoodCollectionList()</code> to update the <code>FoodCollectionList</code> according to the modified Pet list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below is an illustration of the flow of events that happen in the logical component when <code>Step 2</code> above occurs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DisplayInventorySequenceDiagram.png" alt="DisplayInventorySequenceDiagram">
+</div>
+<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>display i</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-maintaining-the-collection-of-food-in-a-pet-tracker"><a class="link" href="#aspect-maintaining-the-collection-of-food-in-a-pet-tracker">Aspect: Maintaining the collection of food in a pet tracker</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(current choice): Maintains the list as an attribute of <code>UniquePetList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to initialize and update the list.</p>
+</li>
+<li>
+<p>Cons: Less extendability. Adding additional food items in inventory(independent of pet list) is difficult.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Maintains a list of food collections separate from <code>UniquePetList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher Extendability that supports more independent operations of FoodCollection List.</p>
+</li>
+<li>
+<p>Cons: More difficult to constantly update and maintain the food collection list should food list changes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-updating-the-collection-of-food-when-pet-list-is-modified"><a class="link" href="#aspect-updating-the-collection-of-food-when-pet-list-is-modified">Aspect: Updating the collection of food when pet list is modified.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(current choice): Replace the entire list by a new food collection list created from the updated pet list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and no adaptation is required for different types of modification of pet list.</p>
+</li>
+<li>
+<p>Cons: Computationally intensive when there is a huge pet list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Modify <code>FoodCollection</code> affected by the command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less computationally intensive and more responsive given a large database.</p>
+</li>
+<li>
+<p>Cons: Adaptations for each pet related commands is required since the food list can be affected in different ways.(e.g addition, modification, deletion)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 02:35:23 UTC</div></div></div></body></html>
