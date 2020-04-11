@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>(WIP) Pet Store Helper - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Pet Store Helper - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1><strong>(WIP)</strong> Pet Store Helper - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Pet Store Helper - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: AY1920S2-CS2103-W15-4    Since: Feb 2020      Licence: MIT</p>
+<p>By: <code>AY1920S2-CS2103-W15-4</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -27,39 +27,40 @@
 <li><a href="#statistics">3.3. Statistics</a></li>
 </ul>
 </li>
-<li><a href="#Commands">4. Commands</a>
+<li><a href="#Limitations">4. Limitations</a></li>
+<li><a href="#Commands">5. Commands</a>
 <ul class="sectlevel2">
-<li><a href="#common-general-commands">4.1. Common / general commands</a>
+<li><a href="#common-general-commands">5.1. Common / general commands</a>
 <ul class="sectlevel3">
-<li><a href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></li>
-<li><a href="#changing-the-display-code-display-code">4.1.3. Changing the display: <code>display</code></a></li>
-<li><a href="#saving-the-data-code-backup-code">4.1.4. Saving the data: <code>backup</code></a></li>
-<li><a href="#retrieving-data-code-load-code">4.1.5. Retrieving data: <code>load</code></a></li>
-<li><a href="#statistics-code-stats-code">4.1.6. Statistics: <code>stats</code></a></li>
+<li><a href="#viewing-help-code-help-code">5.1.1. Viewing help: <code>help</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.1.2. Exiting the program: <code>exit</code></a></li>
+<li><a href="#changing-the-display-code-display-code">5.1.3. Changing the display: <code>display</code></a></li>
+<li><a href="#saving-the-data-code-backup-code">5.1.4. Saving the data: <code>backup</code></a></li>
+<li><a href="#retrieving-data-code-load-code">5.1.5. Retrieving data: <code>load</code></a></li>
+<li><a href="#statistics-code-stats-code">5.1.6. Statistics: <code>stats</code></a></li>
 </ul>
 </li>
-<li><a href="#pet-related-commands">4.2. Pet-related commands</a>
+<li><a href="#pet-related-commands">5.2. Pet-related commands</a>
 <ul class="sectlevel3">
-<li><a href="#adding-a-pet-code-addpet-code">4.2.1. Adding a pet: <code>addpet</code></a></li>
-<li><a href="#finding-pets-by-names-code-findpets-code">4.2.2. Finding pets by names: <code>findpets</code></a></li>
-<li><a href="#editing-a-pet-code-editpet-code">4.2.3. Editing a pet: <code>editpet</code></a></li>
-<li><a href="#deleting-a-pet-code-deletepet-code">4.2.4. Deleting a pet: <code>deletepet</code></a></li>
+<li><a href="#adding-a-pet-code-addpet-code">5.2.1. Adding a pet: <code>addpet</code></a></li>
+<li><a href="#finding-pets-by-names-code-findpets-code">5.2.2. Finding pets by names: <code>findpets</code></a></li>
+<li><a href="#editing-a-pet-code-editpet-code">5.2.3. Editing a pet: <code>editpet</code></a></li>
+<li><a href="#deleting-a-pet-code-deletepet-code">5.2.4. Deleting a pet: <code>deletepet</code></a></li>
 </ul>
 </li>
-<li><a href="#schedule-related-commands">4.3. Schedule-related commands</a>
+<li><a href="#schedule-related-commands">5.3. Schedule-related commands</a>
 <ul class="sectlevel3">
-<li><a href="#adding-a-slot-code-addslot-code">4.3.1. Adding a slot: <code>addslot</code></a></li>
-<li><a href="#finding-slots-code-findslots-code">4.3.2. Finding slots: <code>findslots</code></a></li>
-<li><a href="#edting-a-slot-code-editslot-code">4.3.3. Edting a slot: <code>editslot</code></a></li>
-<li><a href="#deleting-a-slot-code-deleteslot-code">4.3.4. Deleting a slot: <code>deleteslot</code></a></li>
-<li><a href="#showing-all-conflicts-code-conflicts-code">4.3.5. Showing all conflicts: <code>conflicts</code></a></li>
+<li><a href="#adding-a-slot-code-addslot-code">5.3.1. Adding a slot: <code>addslot</code></a></li>
+<li><a href="#finding-slots-code-findslots-code">5.3.2. Finding slots: <code>findslots</code></a></li>
+<li><a href="#edting-a-slot-code-editslot-code">5.3.3. Edting a slot: <code>editslot</code></a></li>
+<li><a href="#deleting-a-slot-code-deleteslot-code">5.3.4. Deleting a slot: <code>deleteslot</code></a></li>
+<li><a href="#showing-all-conflicts-code-conflicts-code">5.3.5. Showing all conflicts: <code>conflicts</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#command-summary">5. Command Summary</a></li>
-<li><a href="#faq">6. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#faq">7. FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -86,7 +87,7 @@
 <p>Ensure you have Java 11 or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest petStoreHelper.jar <a href="https://github.com/AY1920S2-CS2103-W15-4/main/releases">here</a>.</p>
+<p>Download the latest <code>.jar</code> file from <a href="https://github.com/AY1920S2-CS2103-W15-4/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Pet Shop Helper.</p>
@@ -95,7 +96,7 @@
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/user-guide/Welcome.png" alt="Welcome" width="790">
 </div>
 </div>
 </li>
@@ -117,7 +118,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><code>display s</code> : Displays the current schedule as a list of slots.</p>
 </li>
 <li>
-<p><code>addslot n/Teddy t/16/11/2020 1300 d/90</code>: Adds a new showering slot for Teddy with details as given.</p>
+<p><code>addslot n/Teddy t/10/4/2020 1300 d/90</code>: Adds a new showering slot for Teddy with details as given.</p>
 </li>
 <li>
 <p><code>exit</code> : Exits the program.</p>
@@ -126,7 +127,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Commands">Section 4, &#8220;Commands&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Commands">Section 5, &#8220;Commands&#8221;</a> for details of each command.</p>
 </li>
 </ol>
 </div>
@@ -140,10 +141,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Details about each pet kept track of are its name, gender, species, date of birth and dietary requirements. In addition, tags for each pet may also be added.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/petView.png" alt="petView">
+</div>
+</div>
 <div class="sect3">
 <h4 id="pet-food-inventory"><a class="link" href="#pet-food-inventory">3.1.1. Pet Food Inventory</a></h4>
 <div class="paragraph">
 <p>This shows the a list of all pet food (inventory) and the needed amount per week. Double-click on each food item to view the breakdown for each pet individually. This feature is integrated under the <code>display</code> feature as <code>display i</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/inventoryView.png" alt="inventoryView">
+</div>
 </div>
 </div>
 </div>
@@ -157,21 +168,46 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Slots displayed here are arranged in chronological order, with the earliest slot displayed first. In the case where multiple slots start at the same time, the slot with the shortest duration is shown first.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/slotListView.png" alt="slotListView">
+</div>
+</div>
+<div class="paragraph">
+<p>Conflicted slots are distinguished from regular slots from the "[CONFLICT]" label beside the slot index number.</p>
+</div>
+<div class="paragraph">
+<p>This view is obtained by the command <code>display s</code>.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="calendar-view"><a class="link" href="#calendar-view">3.2.2. Calendar view</a></h4>
+<div class="paragraph">
+<p>The calendar view allows many more slots to be seen at once. From a quick glance, the relative durations and timings apart between slots can be seen.</p>
+</div>
 <div class="paragraph">
 <p>Slots that fall on the same day are displayed on the same row. They are then positioned horizontally according to the time they start. The width taken up by each slot in this view is proportional to its duration.</p>
 </div>
 <div class="paragraph">
 <p>If there are conflicted slots, then the time period in which these conflicted slot lie in is simply rendered as single "conflicted" slot.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/calendarView.png" alt="calendarView">
+</div>
+</div>
+<div class="paragraph">
+<p>Regular slots are indicated by the salmon-colored regions, while conflicted slots of the same time period are represented by the maroon-colored regions.</p>
+</div>
+<div class="paragraph">
+<p>This view is obtained by the command <code>display c</code>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="statistics"><a class="link" href="#statistics">3.3. Statistics</a></h3>
 <div class="paragraph">
-<p>The statistics of the pet store shown are:</p>
+<p>The statistics of the pet store, which can be shown via <code>stats</code>, are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -186,11 +222,41 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/stats.png" alt="stats">
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Commands"><a class="link" href="#Commands">4. Commands</a></h2>
+<h2 id="Limitations"><a class="link" href="#Limitations">4. Limitations</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>If the duration of a slot is sufficiently short, then information about the slot can be displayed only partially in calendar view. Workarounds available:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hover the cursor over the slot, and a tooltip containing all the information about that slot will be shown.</p>
+</li>
+<li>
+<p>Taking note of the index number of the slot, do <code>display s</code> and look up the slot with that index number.</p>
+</li>
+<li>
+<p>Taking note of the date of the slot, search for that slot using <code>findslots</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Commands"><a class="link" href="#Commands">5. Commands</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -216,9 +282,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-general-commands"><a class="link" href="#common-general-commands">4.1. Common / general commands</a></h3>
+<h3 id="common-general-commands"><a class="link" href="#common-general-commands">5.1. Common / general commands</a></h3>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">5.1.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Shows the help window.</p>
 </div>
@@ -227,7 +293,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.1.2. Exiting the program: <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.1.2. Exiting the program: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.</p>
 </div>
@@ -236,7 +302,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-the-display-code-display-code"><a class="link" href="#changing-the-display-code-display-code">4.1.3. Changing the display: <code>display</code></a></h4>
+<h4 id="changing-the-display-code-display-code"><a class="link" href="#changing-the-display-code-display-code">5.1.3. Changing the display: <code>display</code></a></h4>
 <div class="paragraph">
 <p>Changes the display board to show the specified system.</p>
 </div>
@@ -269,7 +335,7 @@ Displays all <strong><em>s</em></strong>lots as a list.</p>
 </li>
 <li>
 <p><code>display c</code><br>
-Displays all slots in <strong><em>c</em></strong>alendar view. Conflicted slots are shown in red color. Non-conflicted slots are in pink.</p>
+Displays all slots in <strong><em>c</em></strong>alendar view.</p>
 </li>
 <li>
 <p><code>display i</code><br>
@@ -277,9 +343,12 @@ Displays a list of all pet food (<strong><em>i</em></strong>nventory) and the ne
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>See <a href="#Features">Section 3, &#8220;Features&#8221;</a> for examples of how the different types of display look like.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data-code-backup-code"><a class="link" href="#saving-the-data-code-backup-code">4.1.4. Saving the data: <code>backup</code></a></h4>
+<h4 id="saving-the-data-code-backup-code"><a class="link" href="#saving-the-data-code-backup-code">5.1.4. Saving the data: <code>backup</code></a></h4>
 <div class="paragraph">
 <p>All data is saved to the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.<br>
@@ -288,7 +357,7 @@ The file name is a timestamp in the format "yyyyMMdd_HH_mm_ss".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="retrieving-data-code-load-code"><a class="link" href="#retrieving-data-code-load-code">4.1.5. Retrieving data: <code>load</code></a></h4>
+<h4 id="retrieving-data-code-load-code"><a class="link" href="#retrieving-data-code-load-code">5.1.5. Retrieving data: <code>load</code></a></h4>
 <div class="paragraph">
 <p>Loads the specified file from the hard disk.<br>
 Format: <code>load FILE_NAME</code></p>
@@ -324,7 +393,7 @@ Loads the file pettracker.json from the hard disk.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="statistics-code-stats-code"><a class="link" href="#statistics-code-stats-code">4.1.6. Statistics: <code>stats</code></a></h4>
+<h4 id="statistics-code-stats-code"><a class="link" href="#statistics-code-stats-code">5.1.6. Statistics: <code>stats</code></a></h4>
 <div class="paragraph">
 <p>Provides statistics about the pet tracker, schedule system, and inventory.<br></p>
 </div>
@@ -348,9 +417,9 @@ Loads the file pettracker.json from the hard disk.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="pet-related-commands"><a class="link" href="#pet-related-commands">4.2. Pet-related commands</a></h3>
+<h3 id="pet-related-commands"><a class="link" href="#pet-related-commands">5.2. Pet-related commands</a></h3>
 <div class="sect3">
-<h4 id="adding-a-pet-code-addpet-code"><a class="link" href="#adding-a-pet-code-addpet-code">4.2.1. Adding a pet: <code>addpet</code></a></h4>
+<h4 id="adding-a-pet-code-addpet-code"><a class="link" href="#adding-a-pet-code-addpet-code">5.2.1. Adding a pet: <code>addpet</code></a></h4>
 <div class="paragraph">
 <p>Adds a pet to the pet tracker system.</p>
 </div>
@@ -392,7 +461,7 @@ Loads the file pettracker.json from the hard disk.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-pets-by-names-code-findpets-code"><a class="link" href="#finding-pets-by-names-code-findpets-code">4.2.2. Finding pets by names: <code>findpets</code></a></h4>
+<h4 id="finding-pets-by-names-code-findpets-code"><a class="link" href="#finding-pets-by-names-code-findpets-code">5.2.2. Finding pets by names: <code>findpets</code></a></h4>
 <div class="paragraph">
 <p>Finds pets whose name contains any of the given keywords. The application will automatically change to the pet display system.</p>
 </div>
@@ -426,7 +495,7 @@ Returns a list of pets, whose names either contain <code>garfield</code> or <cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-pet-code-editpet-code"><a class="link" href="#editing-a-pet-code-editpet-code">4.2.3. Editing a pet: <code>editpet</code></a></h4>
+<h4 id="editing-a-pet-code-editpet-code"><a class="link" href="#editing-a-pet-code-editpet-code">5.2.3. Editing a pet: <code>editpet</code></a></h4>
 <div class="paragraph">
 <p>Edits any field of an existing pet in the system.</p>
 </div>
@@ -477,7 +546,7 @@ Overwrites name of the 1st pet in the whole pet list to be "Garfield".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-pet-code-deletepet-code"><a class="link" href="#deleting-a-pet-code-deletepet-code">4.2.4. Deleting a pet: <code>deletepet</code></a></h4>
+<h4 id="deleting-a-pet-code-deletepet-code"><a class="link" href="#deleting-a-pet-code-deletepet-code">5.2.4. Deleting a pet: <code>deletepet</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified pet from the system.</p>
 </div>
@@ -520,22 +589,32 @@ Deletes 2nd pet in the whole pet list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-related-commands"><a class="link" href="#schedule-related-commands">4.3. Schedule-related commands</a></h3>
+<h3 id="schedule-related-commands"><a class="link" href="#schedule-related-commands">5.3. Schedule-related commands</a></h3>
 <div class="sect3">
-<h4 id="adding-a-slot-code-addslot-code"><a class="link" href="#adding-a-slot-code-addslot-code">4.3.1. Adding a slot: <code>addslot</code></a></h4>
+<h4 id="adding-a-slot-code-addslot-code"><a class="link" href="#adding-a-slot-code-addslot-code">5.3.1. Adding a slot: <code>addslot</code></a></h4>
 <div class="paragraph">
-<p>Adds a new occupied slot to the schedule.</p>
+<p>Adds a new slot to the schedule.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addslot n/PETNAME t/DATETIME d/DURATION</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Adds a new showering slot for a pet, identified by its name. This given pet must already exist in the pet tracker system.</p>
+</div>
+<div class="paragraph">
+<p>The Pet Store Helper does not allow slots to span across multiple days. This is to allow slots to be displayed properly in calendar view. As such, slots must start and end on the same day.</p>
+</div>
+<div class="paragraph">
+<p>Unlike pets, duplicate slots (same pets, same datetimes, same durations) are allowed to be added in, so that the system remains flexible to use. Such slots, when added, would simply be indicated as conflicts.</p>
+</div>
+<div class="paragraph">
+<p>Upon addition of slot, the display remains the same (e.g. if the program was showing the list of pets, it will continue to show that even after a slot is added). This is because the user may wish to continue referring to the pets while adding more slots.</p>
+</div>
+<div class="paragraph">
+<p>Details about the arguments:</p>
+</div>
 <div class="ulist">
 <ul>
-<li>
-<p>The pet must already exist in the pet tracker system.</p>
-</li>
 <li>
 <p>The datetime must be in <code>d/M/yyyy HHmm</code> format.</p>
 <div class="ulist">
@@ -547,14 +626,9 @@ Deletes 2nd pet in the whole pet list.</p>
 </div>
 </li>
 <li>
-<p>The duration is to be specified in minutes as a non-zero, positive integer.</p>
-</li>
-<li>
-<p>The slot must start and end on the same day.</p>
+<p>The duration is to be specified in minutes as a non-zero, positive integer, and cannot be longer than a day.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -562,38 +636,40 @@ Deletes 2nd pet in the whole pet list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addslot n/Coco t/16/11/2020 1300 d/90</code></p>
+<p><code>addslot n/Coco t/10/4/2020 1300 d/90</code></p>
 </li>
 <li>
-<p><code>addslot n/Brian Griffin t/17/11/2020 1500 d/45</code></p>
+<p><code>addslot n/Teddy t/11/4/2020 1500 d/45</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-slots-code-findslots-code"><a class="link" href="#finding-slots-code-findslots-code">4.3.2. Finding slots: <code>findslots</code></a></h4>
+<h4 id="finding-slots-code-findslots-code"><a class="link" href="#finding-slots-code-findslots-code">5.3.2. Finding slots: <code>findslots</code></a></h4>
 <div class="paragraph">
-<p>Finds slots occupied by a pet matching the specified name, or slots occupied on the given date, or both. Slots that matched the query will be returned and displayed sequentially as a list.</p>
+<p>Finds slots occupied by a pet based on pet name / date of slot.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>findslots [n/PETNAME] [t/DATE]</code></p>
+<p>Format: <code>findslots [n/PETNAME [MORE_PETNAMES]] [t/DATE [MORE_DATES]]</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Finds slots occupied by a pet matching the specified name, or slots occupied on the given date, or both. At least a name, or a date, must be provided.</p>
+</div>
+<div class="paragraph">
+<p>Slots with pet name matching at least one keyword will be returned (i.e. OR search). e.g. <code>Hans Bo</code> will return slots with <code>Hans Gruber</code>, and slots with <code>Bo Yang</code>. The similar case applies for dates. Thus, informally, given <code>findslots n/name1 name2 t/date1 date2</code>, it is equivalent to searching for slots that match <code>(name1 OR name2) AND (date1 OR date2)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The program display will be switched to show the slots that are matched. These slots are shown sequentially as a list and are ordered chronologically, from earliest to latest.</p>
+</div>
+<div class="paragraph">
+<p>Details about the arguments:</p>
+</div>
 <div class="ulist">
 <ul>
-<li>
-<p>This command can take one pet name, one date, or one pet name and one date.</p>
-</li>
-<li>
-<p>Slots with pets matching at least one keyword will be returned (i.e. OR search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code>.</p>
-</li>
 <li>
 <p>The date must be in <code>d/M/yyyy</code> format.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -601,49 +677,93 @@ Deletes 2nd pet in the whole pet list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findslots n/Brian Griffin</code><br>
-Displays the slots occupied by <code>Brian Griffin</code>, <code>Brian Griffin Jr</code>, <code>Griffin</code> or <code>Brian Smith</code>.</p>
+<p><code>findslots n/Coco</code><br>
+Displays all slots occupied by <code>Coco</code>.</p>
 </li>
 <li>
-<p><code>findslots n/Coco t/16/11/2020</code><br>
-Displays the slots occupied by <code>Coco</code> on <code>16/11/2020</code>.</p>
+<p><code>findslots n/Coco Teddy</code><br>
+Displays all slots occupied by <code>Coco</code>, as well as slots occupied by <code>Teddy</code>.</p>
+</li>
+<li>
+<p><code>findslots n/Coco t/10/4/2020 11/4/2020</code><br>
+Displays all slots occupied by <code>Coco</code> on <code>10/4/2020</code>, and on <code>11/4/2020</code>.</p>
+</li>
+<li>
+<p><code>findslots n/Coco Teddy t/10/4/2020 11/4/2020</code><br>
+Displays the slots that are:<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>occupied by <code>Coco</code> on <code>10/4/2020</code>,</p>
+</li>
+<li>
+<p>occupied by <code>Coco</code> on <code>11/4/2020</code>,</p>
+</li>
+<li>
+<p>occupied by <code>Teddy</code> on <code>10/4/2020</code>, and</p>
+</li>
+<li>
+<p>occupied by <code>Teddy</code> on <code>11/4/2020</code>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edting-a-slot-code-editslot-code"><a class="link" href="#edting-a-slot-code-editslot-code">4.3.3. Edting a slot: <code>editslot</code></a></h4>
+<h4 id="edting-a-slot-code-editslot-code"><a class="link" href="#edting-a-slot-code-editslot-code">5.3.3. Edting a slot: <code>editslot</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing occupied slot in the schedule.</p>
+<p>Edits the details of an existing occupied slot in the schedule.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>editslot INDEX [n/PETNAME] [t/DATETIME] [d/DURATION]</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>The index passed in is intepreted differently, based on current display of the program.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>If the app is displaying slots (<code>display s</code> or <code>display c</code>), then the index refers to the index number shown in the current display. Otherwise, the index refers to the index number of the slot in the entire list of slots.</p>
+<p>If the program is displaying slots (via <code>display s</code>, <code>display c</code> or <code>findslots</code>), then the index is based on the index numbers shown in the current display (indicated with blue boxes).</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/slotIndex1.png" alt="slotIndex1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/slotIndex2.png" alt="slotIndex2">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Otherwise, the index refers to the index number of the slot in the entire schedule.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Every argument of this command is optional, since it might not be necessary to edit all the fields of a slot. However, at least one must be provided (else, nothing about the slot is changed). For fields with no new values provided, their existing values are retained. Only fields with new values provided will be updated to the input values.</p>
+</div>
+<div class="paragraph">
+<p>As explained in the above section, the new slot must start and end on the same day.</p>
+</div>
+<div class="paragraph">
+<p>Details about the arguments:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>Specifications for the pet, datetime and/or duration passed in are the same as those specified in <a href="#adding-a-slot-code-addslot-code">Section 4.3.1, &#8220;Adding a slot: <code>addslot</code>&#8221;</a>.</p>
-</li>
-<li>
-<p>The new slot must start and end on the same day.</p>
+<p>Specifications for the pet, datetime and/or duration passed in are the same as those specified in <a href="#adding-a-slot-code-addslot-code">Section 5.3.1, &#8220;Adding a slot: <code>addslot</code>&#8221;</a>.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -652,43 +772,45 @@ Displays the slots occupied by <code>Coco</code> on <code>16/11/2020</code>.</p>
 <ul>
 <li>
 <p><code>display s</code><br>
-<code>editslot 1 t/16/11/2020 1300 d/120</code><br>
-Edits the datetime and duration of the 1st slot to be <code>16/11/2020 1300</code>, and <code>120</code> minutes respectively.</p>
+<code>editslot 1 t/10/4/2020 1300 d/120</code><br>
+Edits the datetime and duration of the 1st slot to be <code>10/4/2020 1300</code>, and <code>120</code> minutes respectively. The pet occupying the slot remains the unchanged.</p>
 </li>
 <li>
-<p><code>findslots t/1/1/2020<br>
-editslot 3 d/45</code><br>
+<p><code>findslots t/11/4/2020</code><br>
+<code>editslot 3 d/45</code><br>
 Edits the duration of the 3rd slot in the search results of <code>findslots</code> to be <code>45</code> minutes.</p>
 </li>
 <li>
 <p><code>display p</code><br>
-<code>editslot 12 n/Brian Griffin</code><br>
-Edits the pet occupying the 12th slot to be <code>Brian Griffin</code>.</p>
+<code>editslot 12 n/Teddy</code><br>
+Edits the 12th slot in the entire schedule to be occupied by <code>Teddy</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-slot-code-deleteslot-code"><a class="link" href="#deleting-a-slot-code-deleteslot-code">4.3.4. Deleting a slot: <code>deleteslot</code></a></h4>
+<h4 id="deleting-a-slot-code-deleteslot-code"><a class="link" href="#deleting-a-slot-code-deleteslot-code">5.3.4. Deleting a slot: <code>deleteslot</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified slot from the schedule.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>deleteslot INDEX</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>The index is intepreted in the same manner as in <a href="#edting-a-slot-code-editslot-code">Section 5.3.3, &#8220;Edting a slot: <code>editslot</code>&#8221;</a>.</p>
+</div>
+<div class="paragraph">
+<p>Similar to <code>addslot</code>, the display remains the same (e.g. if the program was showing the list of pets, it will continue to show that even after a slot is deleted). This is because the user may wish to continue referring to the pets while deleting more slots.</p>
+</div>
+<div class="paragraph">
+<p>Details about the argument:</p>
+</div>
 <div class="ulist">
 <ul>
-<li>
-<p>If the app is displaying slots (<code>display s</code> or <code>display c</code>), then the index refers to the index number shown in the current display. Otherwise, the index refers to the index number of the slot in the entire list of slots.</p>
-</li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -708,25 +830,34 @@ Deletes the 2nd slot in the search results of <code>findslots</code>.</p>
 <li>
 <p><code>display i</code><br>
 <code>deleteslot 2</code><br>
-Deletes the 2nd slot in the schedule.</p>
+Deletes the 2nd slot in the schedule (same as the first example in this section).</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="showing-all-conflicts-code-conflicts-code"><a class="link" href="#showing-all-conflicts-code-conflicts-code">4.3.5. Showing all conflicts: <code>conflicts</code></a></h4>
+<h4 id="showing-all-conflicts-code-conflicts-code"><a class="link" href="#showing-all-conflicts-code-conflicts-code">5.3.5. Showing all conflicts: <code>conflicts</code></a></h4>
 <div class="paragraph">
-<p>Displays the slots that have a conflict, i.e., an overlap in time with another occupied slot. The conflicted slots are displayed sequentially as a list.</p>
+<p>Displays all conflicted slots.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>conflicts</code></p>
+</div>
+<div class="paragraph">
+<p>Displays the slots that have a conflict, i.e., an overlap in time with another occupied slot.</p>
+</div>
+<div class="paragraph">
+<p>Upon calling this command, the program display will be switched to show all conflicted slots. These conflicted slots are shown sequentially as a list and are ordered chronologically, from earliest to latest.</p>
+</div>
+<div class="paragraph">
+<p>This command takes in no arguments.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -789,20 +920,21 @@ e.g. <code>deletepet 2</code></p>
 <ul>
 <li>
 <p><strong>Add slot</strong>: <code>addslot n/PETNAME t/DATETIME d/DURATION</code><br>
-e.g. <code>addslot n/Coco t/16/11/2020 1300 d/90</code><br>
-e.g. <code>addslot n/Brian Griffin t/17/11/2020 1500 d/45</code></p>
+e.g. <code>addslot n/Coco t/10/4/2020 1300 d/90</code><br>
+e.g. <code>addslot n/Teddy t/11/4/2020 1500 d/45</code></p>
 </li>
 <li>
-<p><strong>Find slot</strong>: <code>findslots [n/PETNAME] [t/DATE]</code><br>
-e.g. <code>findslots n/Brian Griffin</code><br>
-e.g. <code>findslots t/20/2/2020</code><br>
-e.g. <code>findslots n/Coco t/16/11/2020</code></p>
+<p><strong>Find slots</strong>: <code>findslots [n/PETNAME [PETNAME]] [t/DATE [DATE]]</code><br>
+e.g. <code>findslots n/Coco</code><br>
+e.g. <code>findslots n/Coco Teddy</code><br>
+e.g. <code>findslots n/Coco t/10/4/2020 11/4/2020</code><br>
+e.g. <code>findslots n/Coco Teddy t/10/4/2020 11/4/2020</code></p>
 </li>
 <li>
 <p><strong>Edit slot</strong>: <code>editslot INDEX [n/PETNAME] [t/DATETIME] [d/DURATION]</code><br>
-e.g. <code>editslot 1 t/16/11/2020 1300 d/120</code><br>
+e.g. <code>editslot 1 t/10/4/2020 1300 d/120</code><br>
 e.g. <code>editslot 3 d/45</code><br>
-e.g. <code>editslot 12 n/Brian Griffin</code></p>
+e.g. <code>editslot 12 n/Teddy</code></p>
 </li>
 <li>
 <p><strong>Delete slot</strong>: <code>deleteslot INDEX</code><br>
@@ -819,11 +951,11 @@ e.g. <code>deleteslot 2</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">7. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Pet Shop Helper folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 15:25:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 19:00:42 UTC</div></div></div></body></html>
