@@ -713,6 +713,8 @@ just its size</p>
 </div>
 <div class="sect2">
 <h3 id="statistics"><a class="link" href="#statistics">3.6. Statistics</a></h3>
+<div class="sect3">
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
 </div>
@@ -722,7 +724,10 @@ just its size</p>
 <p><code>OverallStatistics</code> under UI component handles the translation of three sets of data: list of pets, schedule, and list of inventory.</p>
 </li>
 <li>
-<p>Data is obtained from <code>Logic</code>.</p>
+<p>Data in <code>OverallStatistics</code> is obtained from <code>Logic</code>.</p>
+</li>
+<li>
+<p>The statistics displayed will automatically update if there is a change  in any related information.</p>
 </li>
 </ul>
 </div>
@@ -743,8 +748,61 @@ just its size</p>
 </ul>
 </div>
 <div class="paragraph">
+<p>Here is the process of how the overall statistics is displayed to the user:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user key in the command 'stats', then the Logic component processes the input and creates an instance of <code>StatsCommand</code>.
+The <code>StatsCommand</code> first calls <code>Model#updateAll()</code> to make sure that the model will update <code>filteredPets</code>, <code>filteredSlots</code>, and <code>filteredFoodCollections</code> to show the full list of <code>Pet</code>, <code>Slot</code> and <code>FoodCollection</code> in the <code>PetTracker</code>.
+After that, the <code>StatsCommand</code> calls <code>Model#changeDisplaySystem(DisplaySystemType.STATISTICS</code>) such that the application will later switch the window to show <code>OverallStatistics</code>.
+In the Ui component, there is a new instance of <code>OverallStatistics</code> created, while <code>Model#getFilteredPets</code>, <code>Model#getFilteredSlots</code>, and <code>Model#getFilteredFoodCollections</code> are passed in the instance for processing. <code>OverallStatistics</code> then generates diagrams according to the data passes in.</p>
+</li>
+<li>
+<p>Step 2: The user inputs a command that modifies the UniquePetList, e.g 'editpet 1 s/cat'. The <code>CommandResult</code> of any <code>EditPetCommand</code> has <code>type</code> with <code>DisplaySystemType.NO_CHANGE</code>. The Ui component identifies the <code>type</code> in the <code>CommandResult</code> and then refresh the window if it is <code>NO_CHANGE</code>. In this case, the window will refresh and create another new instance of <code>OverallStatistics</code> with the updated list of pets. Therefore the window always shows statistics of the most updated list of pets, slots and food collections.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>Following is the sequential diagram of the command <code>stats</code>
 <span class="image"><img src="images/dev-guide/StatsSequenceDiagram.png" alt="StatsSequenceDiagram"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-update-diagrams-when-there-are-changes"><a class="link" href="#aspect-how-to-update-diagrams-when-there-are-changes">Aspect: How to update diagrams when there are changes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Refresh the screen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and only need to refer to <code>model</code> to get data.</p>
+</li>
+<li>
+<p>Cons: Takes time to process the whole lists of data even though there is only one small change in one of the item (pets, slots or foo collection). This approach might be time consuming when the data size is too large.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Make use of <code>Listener</code> to detect change in <code>UniquePetList</code> and make changes accordingly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Avoid unnecessary processing of data. e.g. The diagrams need not be regenerated when there is no change in pet species, pet food, and recent schedule.</p>
+</li>
+<li>
+<p>Cons: More complicated implementation. There might be more coupling between <code>OverallStatistics</code> under Ui component and Listener class under Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1141,4 +1199,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 08:00:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 11:00:14 UTC</div></div></div></body></html>
