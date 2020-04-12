@@ -470,6 +470,44 @@ compares it with <code>getDate()</code>.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The activity diagram below is an illustration of the flow of events that happen in the model component when the steps
+above occurs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/FindSlotParserDiagram.png" alt="FindSlotParserDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario that demonstrates how the <code>Schedule</code> system integrates with the <code>Pet</code> system.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application with a pet stored: <code>Garfield</code>. A single instance of <code>Slot</code> occupies
+<code>ObservableList&lt;Slot&gt;</code> in <code>Schedule</code>, whose parameters are: <code>petName: Garfield</code>,
+<code>dateTime: 11/4/2020 1200</code>, <code>duration: 40</code>. Upon launch, a <code>PetListChangeListener</code> will be attached to <code>internalList</code> of
+<code>UniquePetList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>deletepet 1</code> command to delete <code>Garfield</code> from the <code>UniquePetList</code>. When user deletes the pet,
+function <code>onChanged</code> in <code>PetListChangeListener</code> is called. This function calls <code>removeExcessSlot</code> within the
+<code>PetListChangeListener</code> for each pet removed.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>removeExcessSlot</code> calls <code>remove</code> in <code>Schedule</code> to remove slots based on the name of the removed pet.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now have successfully removed <code>Garfield</code> and all the slots the pet used to occupy.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below is an illustration of the flow of events that happen in the model component when the steps
+above occurs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/SlotAutoUpdateSequenceDiagram.png" alt="SlotAutoUpdateSequenceDiagram">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
@@ -482,10 +520,11 @@ compares it with <code>getDate()</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: When the pet is edited, the slot is also updated.</p>
+<p>Pros: When the pet is edited, it is easier to update the corresponding slot. Also reduces save file size and
+conserve system memory as there will be no duplicate information.</p>
 </li>
 <li>
-<p>Cons: Hard to implement and test.</p>
+<p>Cons: Harder to implement and test. Testing requires a sample list of pets to be instantiated first.</p>
 </li>
 </ul>
 </div>
@@ -498,7 +537,7 @@ compares it with <code>getDate()</code>.</p>
 <p>Pros: Easy to implement and test (A refactor of <code>Pet</code>), low coupling with <code>Model</code>.</p>
 </li>
 <li>
-<p>Cons: Does not update when original pet is edited, which is not something the user will expect.</p>
+<p>Cons: Harder to synchronize with any changes in <code>UniquePetList</code></p>
 </li>
 </ul>
 </div>
@@ -1102,4 +1141,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:04:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 08:00:42 UTC</div></div></div></body></html>
