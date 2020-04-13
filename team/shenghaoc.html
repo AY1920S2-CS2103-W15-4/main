@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Chen Shenghao - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Chen Shenghao - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-pet-store-helper"><a class="link" href="#project-pet-store-helper">PROJECT: Pet Store Helper</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pet Store Helper (PSH) is a desktop application used for pet store owners to manage different aspects of their pet store including pet logging, scheduling and inventory management. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 15k LOC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to back up/load app data</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to back up the current state of the app and load app data from any compatible JSON file</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a store should maintain backups of their system files so that data can be recovered in case of a system failure. It is also important to retain past data so that they can be extracted for analysis in the future.</p>
+</li>
+<li>
+<p>Highlights: This enhancement does not affect existing commands, allowing it to integrate seamlessly with the rest of the app. However, this is reliant on the fact that currently the commands are only affected by the data of the app. If an undo/redo command is added, past and undone commands would also need to be saved to avoid errors arising from mismatch of commands and app data.</p>
+</li>
+<li>
+<p>Credits: Code from Address Book Level 4 was referenced to set up temporary files for testing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Updated Storage to allow saving of new/refactored classes to JSON format.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=shenghaoc&amp;tabRepo=AY1920S2-CS2103-W15-4%2Fmain%5Bmaster%5D">Reposense</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>: Refactored Storage package and tests for Logic package</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2.1</code> and <code>v1.3.3</code> (2 releases) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote additional tests for new JSON-adapted classes to maintain coverage (Pull requests <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/21">#21</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/83/files">#83</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did cosmetic tweaks to existing contents of the Developer Guide: <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/90">#90</a> (mainly adjusting the UML diagrams and removing references to AB3)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/134">#134</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/144">#144</a></p>
+</li>
+<li>
+<p>Contributed to forum discussions (examples:  <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/41">1</a>, <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/56">2</a>, <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/94">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated multiple new Github plugins (AppVeyor, Coveralls, CircleCI and Netlify) to the team repo</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="back-up-and-load"><a class="link" href="#back-up-and-load">Back Up and Load</a></h3>
+<div class="paragraph">
+<p>The back up and load commands together allow data to be stored and managed directly.</p>
+</div>
+<div class="sect3">
+<h4 id="back-up"><a class="link" href="#back-up">Back up</a></h4>
+<div class="paragraph">
+<p>To back up the current state of the pet store, enter the <code>backup</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The file name is generated based on the current date and time and reported back.</p>
+</div>
+<div class="paragraph">
+<p>It is stored in the same directory as the default data file.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/backup.png" alt="backup">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="load"><a class="link" href="#load">Load</a></h4>
+<div class="paragraph">
+<p>To load a file, enter the <code>load</code> command followed by the file name.</p>
+</div>
+<div class="paragraph">
+<p>The file should be stored in the same directory as the default data file.</p>
+</div>
+<div class="paragraph">
+<p>For example, after removing a few pets and slots, the screen will be different from when we backed up previously.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/load1.png" alt="load1">
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, entering <code>load 20200413_20_23_57</code> restores the system to its backed-up state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/load2.png" alt="load2">
+</div>
+</div>
+<div class="paragraph">
+<p>The file name can be any valid file name under the curent operating system and need not conform to the backup file naming scheme.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/StorageClassDiagram.png" alt="StorageClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>can save the Pet Tracker data in json format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="back-up-and-load-feature"><a class="link" href="#back-up-and-load-feature">Back up and load feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The back up/load mechanism is facilitated by <code>Storage</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>Storage</code> is extended to implement the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>savePetTracker#(ReadOnlyPetTracker, LocalDateTime)</code>&#8201;&#8212;&#8201;calls <code>savePetTracker#(ReadOnlyPetTracker, Path)</code> after converting LocalDateTime to Path</p>
+</li>
+<li>
+<p><code>savePetTracker#(ReadOnlyPetTracker, Path)</code>&#8201;&#8212;&#8201;saves pet tracker data to specified path</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The back up/load mechanism follows the exact same steps taken when data is saved after each operation and read at initialization. This ensures maximum compatibility and reduces the need for additional code.</p>
+</div>
+<div class="paragraph">
+<p><code>backup</code> should never fail unless the saving of data after every operation also fails. For 'load', there are two additional caveats, the specified file should exist and be in the correct format. This is unlike the reading of data at initialization which simply resorts to an empty file instead if these issues occur.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the backup operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/BackUpSequenceDiagram.png" alt="BackUpSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the load operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/LoadSequenceDiagram.png" alt="LoadSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-back-up-load-executes"><a class="link" href="#aspect-how-back-up-load-executes">Aspect: How back up &amp; load executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Executed by Command, following general pattern for Command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, able to rely on established pattern for Command.</p>
+</li>
+<li>
+<p>Cons: Storage is exposed to classes in the <code>parser</code> package, which should not have access to its methods</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Executed by LogicManager, which already saves data to hard disk after every operation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Storage does not have to be passed to classes in the <code>parser</code> package</p>
+</li>
+<li>
+<p>Cons: Requires passing instruction back to LogicManager, actual operation performed after end of Command#execute(), unable to obtain reliable success/error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-rtos-based-robotic-car"><a class="link" href="#project-rtos-based-robotic-car">PROJECT: RTOS-Based Robotic Car</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>Under a computer engineering module, I am also currently involved in the development of RTOS-based software that allows a robotic car to be controlled for maze navigation via an Android app.</p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:31:26 UTC</div></div></div></body></html>

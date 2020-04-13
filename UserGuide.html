@@ -25,6 +25,12 @@
 </ul>
 </li>
 <li><a href="#statistics">3.3. Statistics</a></li>
+<li><a href="#back-up-and-load">3.4. Back Up and Load</a>
+<ul class="sectlevel3">
+<li><a href="#back-up">3.4.1. Back up</a></li>
+<li><a href="#load">3.4.2. Load</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#Limitations">4. Limitations</a></li>
@@ -228,6 +234,57 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="imageblock">
 <div class="content">
 <img src="images/user-guide/stats.png" alt="stats">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="back-up-and-load"><a class="link" href="#back-up-and-load">3.4. Back Up and Load</a></h3>
+<div class="paragraph">
+<p>The back up and load commands together allow data to be stored and managed directly.</p>
+</div>
+<div class="sect3">
+<h4 id="back-up"><a class="link" href="#back-up">3.4.1. Back up</a></h4>
+<div class="paragraph">
+<p>To back up the current state of the pet store, enter the <code>backup</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The file name is generated based on the current date and time and reported back.</p>
+</div>
+<div class="paragraph">
+<p>It is stored in the same directory as the default data file.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/backup.png" alt="backup">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="load"><a class="link" href="#load">3.4.2. Load</a></h4>
+<div class="paragraph">
+<p>To load a file, enter the <code>load</code> command followed by the file name.</p>
+</div>
+<div class="paragraph">
+<p>The file should be stored in the same directory as the default data file.</p>
+</div>
+<div class="paragraph">
+<p>For example, after removing a few pets and slots, the screen will be different from when we backed up previously.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/load1.png" alt="load1">
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, entering <code>load 20200413_20_23_57</code> restores the system to its backed-up state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/user-guide/load2.png" alt="load2">
+</div>
+</div>
+<div class="paragraph">
+<p>The file name can be any valid file name under the curent operating system and need not conform to the backup file naming scheme.</p>
 </div>
 </div>
 </div>
@@ -1004,4 +1061,4 @@ e.g. <code>deleteslot 2</code></p>
 <strong>A</strong>: First start PSH, and then use <code>exit</code> to quit the application. Go to the data directory, and open <code>pettracker.json</code>. Delete all information in the json file and leave <code>pettracker.json</code> as an empty file. Restart PSH and PSH will be empty.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:17:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:31:26 UTC</div></div></div></body></html>

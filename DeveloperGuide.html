@@ -35,8 +35,9 @@
 <li><a href="#inventory-feature">3.4. Inventory feature</a></li>
 <li><a href="#conflict-feature">3.5. Conflict feature</a></li>
 <li><a href="#statistics">3.6. Statistics</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#back-up-and-load-feature">3.7. Back up and load feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1224,14 +1225,94 @@ In the Ui component, there is a new instance of <code>OverallStats</code> create
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="back-up-and-load-feature"><a class="link" href="#back-up-and-load-feature">3.7. Back up and load feature</a></h3>
+<div class="sect3">
+<h4 id="implementation-8"><a class="link" href="#implementation-8">3.7.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The back up/load mechanism is facilitated by <code>Storage</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>Storage</code> is extended to implement the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>savePetTracker#(ReadOnlyPetTracker, LocalDateTime)</code>&#8201;&#8212;&#8201;calls <code>savePetTracker#(ReadOnlyPetTracker, Path)</code> after converting LocalDateTime to Path</p>
+</li>
+<li>
+<p><code>savePetTracker#(ReadOnlyPetTracker, Path)</code>&#8201;&#8212;&#8201;saves pet tracker data to specified path</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The back up/load mechanism follows the exact same steps taken when data is saved after each operation and read at initialization. This ensures maximum compatibility and reduces the need for additional code.</p>
+</div>
+<div class="paragraph">
+<p><code>backup</code> should never fail unless the saving of data after every operation also fails. For 'load', there are two additional caveats, the specified file should exist and be in the correct format. This is unlike the reading of data at initialization which simply resorts to an empty file instead if these issues occur.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the backup operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/BackUpSequenceDiagram.png" alt="BackUpSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the load operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/LoadSequenceDiagram.png" alt="LoadSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-back-up-load-executes"><a class="link" href="#aspect-how-back-up-load-executes">Aspect: How back up &amp; load executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Executed by Command, following general pattern for Command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, able to rely on established pattern for Command.</p>
+</li>
+<li>
+<p>Cons: Storage is exposed to classes in the <code>parser</code> package, which should not have access to its methods</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Executed by LogicManager, which already saves data to hard disk after every operation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Storage does not have to be passed to classes in the <code>parser</code> package</p>
+</li>
+<li>
+<p>Cons: Requires passing instruction back to LogicManager, actual operation performed after end of Command#execute(), unable to obtain reliable success/error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1263,7 +1344,7 @@ just its size</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1962,4 +2043,4 @@ Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:17:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:31:26 UTC</div></div></div></body></html>
