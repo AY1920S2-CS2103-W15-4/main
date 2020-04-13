@@ -1072,9 +1072,6 @@ In the Ui component, there is a new instance of <code>OverallStatistics</code> c
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1142,9 +1139,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-pet"><a class="link" href="#deleting-a-pet">F.2. Deleting a pet</a></h3>
@@ -1159,23 +1153,20 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>deletepet 1</code><br>
-Expected: First pet is deleted from the list. Details of the deleted pet shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First pet is deleted from the list. Details of the deleted pet shown in the status message. Slots that the pet used to occupy is also deleted.</p>
 </li>
 <li>
 <p>Test case: <code>deletepet 0</code><br>
-Expected: No pet is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No pet is deleted. Error details shown in the status message. Slots remain the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>deletepet</code>, <code>deletepet x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>deletepet</code>, <code>deletepet x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -1187,16 +1178,21 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: List of pets is well populated.</p>
+</li>
+<li>
+<p>Test case: changing pet name manually to an invalid name in pettracker.json<br>
+Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
+</li>
+<li>
+<p>Test case: changing pet name of a slot manually to pet that does not exist in pettracker.json<br>
+Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 02:31:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 03:40:11 UTC</div></div></div></body></html>

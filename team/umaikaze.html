@@ -1,0 +1,669 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Zhao Mingjian - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Zhao Mingjian - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-pet-store-helper"><a class="link" href="#project-pet-store-helper">PROJECT: Pet Store Helper</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pet Store Helper is a desktop application designed for owners of pet stores to help them manage their store and
+operations. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java,
+and has about 15 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added the ability to <strong>schedule when to bathe my own (in-store) pets</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to add/delete/edit/find slots with a specified timing and duration for their (in-store)
+pets</p>
+</li>
+<li>
+<p>Justification: This feature allows the user to manage the slots for their pets to avoid clashes.</p>
+</li>
+<li>
+<p>Highlights: This enhancement is the foundation to other systems such as calendar view and slot list view.
+Integration between Pets and slots need to be carefully handled in order to achieve both immutability of the two systems
+and synchronization between the two systems. It required an in-depth analysis of structural design to avoid promoting
+high coupling.</p>
+</li>
+<li>
+<p>Credits: The use of a listener on the internal UniquePetList to update Slots automatically was inspired by my
+teammates' efforts to synchronize the inventory system with the pet system.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Changed the color scheme and modified the window properties of the UI to give the application a
+cute look to fit its function</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Credits: Window resizing and dragging function implementation referenced from Alexander.Berg, Evgenii Kanivets,
+Zachary Perales from stackoverflow.com, retrieved:
+<a href="https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage" class="bare">https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=15-4&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=umaikaze&amp;tabRepo=AY1920S2-CS2103-W15-4%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=15-4&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=umaikaze&amp;tabRepo=AY1920S2-CS2103-W15-4%2Fmain%5Bmaster%5D">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2</code> &amp; <code>v1.3.2</code> (2 releases) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI color scheme (Pull request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/107">#107</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features, however Covaralls was not implemented at that time so coverage change
+was unclear.
+(Pull requests <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/14">#14</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/61">#61</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/75">#75</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/18">#18</a>,
+<a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/19">#19</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/20">#20</a>,
+<a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/21">#21</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/22">#22</a>,
+<a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/55">#55</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/106">#106</a>,
+<a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/146">#146</a></p>
+</li>
+<li>
+<p>Contributed to forum discussions: <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/63">63</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class
+<a href="https://github.com/AY1920S2-CS2103T-W17-4/main/issues/295">295</a>, <a href="https://github.com/AY1920S2-CS2103T-W17-4/main/issues/296">296</a>
+<a href="https://github.com/AY1920S2-CS2103T-W17-4/main/issues/297">297</a>, <a href="https://github.com/AY1920S2-CS2103T-W17-4/main/issues/298">298</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a new Github plugin (TravisCI) to the team repo</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write a technical
+documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">Schedule feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The schedule feature uses instances of class <code>Slot</code> to organise bathing schedule for the pets. Each <code>Slot</code> contains a
+starting time of the bath, stored internally as a <code>LocalDateTime</code>, and the duration of the bath stored internally as a
+<code>Duration</code>. It stores a reference to the <code>Pet</code> in the <code>ModelManager</code> as specified by the user.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the <code>Schedule</code> mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application with some pets stored (<code>Garfield</code>, for instance). <code>ObservableList&lt;Slot&gt;</code>
+in <code>Schedule</code> is currently empty.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>addslot n/Garfield t/1/4/2020 1200 d/120</code> command to create a <code>Slot</code> for <code>Garfield</code>.
+The <code>AddSlotCommandParser</code> calls <code>parsePet()</code> in <code>SlotParserUtil</code>, which then takes in the <code>Model</code> passed in to find a
+reference for the specific <code>Pet</code> with <code>Model.getPet()</code>. Prior to this stage, if the name string is invalid, a
+<code>ParseException(MESSAGE_INVALID_PETNAME)</code> will be thrown. Or the program cannot find the <code>Pet</code> in the model, a
+<code>ParseException(MESSAGE_PET_DOES_NOT_EXIST)</code> will be thrown. This ensures that every slot created actually points to an
+existing <code>Pet</code> found in <code>PetTracker</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>parsePet()</code> fails its execution, no new <code>Slot</code> is created.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. New <code>Slot</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now decides that this exact slot should be occupied by another pet, and decides to edit it, executing
+the <code>editslot</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>SlotParserUtil</code> is used again to create a reference to a pet in the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. The user now decides that they need to see slots occupied by a particular pet on a particular date, executing
+the <code>findslots n/Garfield t/1/4/2020</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. The <code>FindSlotCommand</code> reduces the two predicates* and pass it to <code>ModelManager</code> to create a filtered list of
+slots.</p>
+</div>
+<div class="paragraph">
+<p>*The <code>FindSlotCommand</code> uses the following classes which both inherit <code>Predicate&lt;Slot&gt;</code> to search for the user specified
+slots:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SlotPetNamePredicate()</code>&#8201;&#8212;&#8201;Internally stores the <code>Name</code> to search for, and compares it with
+<code>getPet().getName().fullName</code>.</p>
+</li>
+<li>
+<p><code>SlotDateTimePredicate()</code>&#8201;&#8212;&#8201;Internally stores the <code>LocalDateTime</code> to search for (Timing will be ignored), and
+compares it with <code>getDate()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The activity diagram below is an illustration of the flow of events that happen in the model component when the steps
+above occurs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/FindSlotParserDiagram.png" alt="FindSlotParserDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario that demonstrates how the <code>Schedule</code> system integrates with the <code>Pet</code> system.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application with a pet stored: <code>Garfield</code>. A single instance of <code>Slot</code> occupies
+<code>ObservableList&lt;Slot&gt;</code> in <code>Schedule</code>, whose parameters are: <code>petName: Garfield</code>,
+<code>dateTime: 11/4/2020 1200</code>, <code>duration: 40</code>. Upon launch, a <code>PetListChangeListener</code> will be attached to <code>internalList</code> of
+<code>UniquePetList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>deletepet 1</code> command to delete <code>Garfield</code> from the <code>UniquePetList</code>. When user deletes the pet,
+function <code>onChanged</code> in <code>PetListChangeListener</code> is called. This function calls <code>removeExcessSlot</code> within the
+<code>PetListChangeListener</code> for each pet removed.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>removeExcessSlot</code> calls <code>remove</code> in <code>Schedule</code> to remove slots based on the name of the removed pet.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now have successfully removed <code>Garfield</code> and all the slots the pet used to occupy.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below is an illustration of the flow of events that happen in the model component when the steps
+above occurs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/SlotAutoUpdateSequenceDiagram.png" alt="SlotAutoUpdateSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-schedule-stores-the-pets-internally"><a class="link" href="#aspect-how-schedule-stores-the-pets-internally">Aspect: How schedule stores the pets internally</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Makes a reference to the the memory address in <code>ModelManager</code> .</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: When the pet is edited, it is easier to update the corresponding slot. Also reduces save file size and
+conserve system memory as there will be no duplicate information.</p>
+</li>
+<li>
+<p>Cons: Harder to implement and test. Testing requires a sample list of pets to be instantiated first.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Simply create a new Pet.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and test (A refactor of <code>Pet</code>), low coupling with <code>Model</code>.</p>
+</li>
+<li>
+<p>Cons: Harder to synchronize with any changes in <code>UniquePetList</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>has a need to manage their pet store with a variety of animals and features</p>
+</li>
+<li>
+<p>has a need to make schedules for pet grooming and ensure no-conflict in the scheduling</p>
+</li>
+<li>
+<p>prefer desktop apps over other types</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: manage pets, pet consumables and schedule faster than a typical mouse/GUI driven app</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Low (nice to have) - <code>* *</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key in a new pet, enter its breed, age, size and food consumption.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the pets I have in my store and their details</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a pet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove pets that I have sold or no longer taking care of</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a pet by name, species or tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of the pets without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of pet food, cleaning products and other consumables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not run low on items needed to keep the pets healthy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule when to bathe my own (in-store) pets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">avoid clashes in bathing schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the schedule and see which slots are available to bathe the customers' pets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">avoid clashes in bathing schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see which free slots are available for grooming</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">avoid clashes in grooming</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view a statistical summary of the pets, stocks and schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">handle logistics of the store more efficiently</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add photos for the pets in store to illustrate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easier to make a mental link between the actual pets in the store and the names</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the cost and revenue generated by each pet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so to buy the more popular ones in next restock</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>PSH</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-delete-pet" class="discrete">Use case: Delete pet</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list pets</p>
+</li>
+<li>
+<p>PSH shows a list of pets</p>
+</li>
+<li>
+<p>User requests to delete a specific pet in the list</p>
+</li>
+<li>
+<p>PetTracker deletes the pet</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. PSH shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-removing-a-bathing-slot" class="discrete">Use case: Removing a bathing slot</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to show schedule</p>
+</li>
+<li>
+<p>PSH shows  schedule of that day</p>
+</li>
+<li>
+<p>User requests of delete a slot at a specified timing</p>
+</li>
+<li>
+<p>PSH deletes the slot</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There is currently conflict in the scheduling (i.e. One slot begins before the previous one ends), the latter slot is shown in red.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2</p>
+</div>
+</li>
+<li>
+<p>3a. The given timing does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. PSH shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 500 pets + items in total without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample pets and slots. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-pet"><a class="link" href="#deleting-a-pet">Deleting a pet</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a pet while all pets are displayed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Display all pets using the <code>display p</code> command. Multiple pets in the display.</p>
+</li>
+<li>
+<p>Test case: <code>deletepet 1</code><br>
+Expected: First pet is deleted from the list. Details of the deleted pet shown in the status message. Slots that the pet used to occupy is also deleted.</p>
+</li>
+<li>
+<p>Test case: <code>deletepet 0</code><br>
+Expected: No pet is deleted. Error details shown in the status message. Slots remain the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>deletepet</code>, <code>deletepet x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List of pets is well populated.</p>
+</li>
+<li>
+<p>Test case: changing pet name manually to an invalid name in pettracker.json<br>
+Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
+</li>
+<li>
+<p>Test case: changing pet name of a slot manually to pet that does not exist in pettracker.json<br>
+Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 03:40:11 UTC</div></div></div></body></html>
