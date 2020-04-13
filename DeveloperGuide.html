@@ -33,9 +33,10 @@
 <li><a href="#schedule-feature">3.2. Schedule feature</a></li>
 <li><a href="#calendar-feature">3.3. Calendar feature</a></li>
 <li><a href="#inventory-feature">3.4. Inventory feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
-<li><a href="#statistics">3.7. Statistics</a></li>
+<li><a href="#conflict-feature">3.5. Conflict feature</a></li>
+<li><a href="#statistics">3.6. Statistics</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1026,14 +1027,208 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="conflict-feature"><a class="link" href="#conflict-feature">3.5. Conflict feature</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.5.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The conflict feature shows a list of all slots that has overlapping time period.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It makes uses of <code>SlotConflictPredicate</code> which implements <code>SlotPredicate</code> to filter slots that has a conflicting timing with some other slots.</p>
+</li>
+<li>
+<p>If the screen is displaying shortlisted slots, <code>conflics</code> only shows slots with conflicts among the shortlisted list. Otherwise, it shows conflicts in the full slot list</p>
+</li>
+<li>
+<p>The command automatically switch display to slots.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is a scenario of using <code>conflicts</code> command:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user inputs "conflicts" in the command line. The Logic component processes the input and creates a new instance of <code>ConflictCommand</code></p>
+</li>
+<li>
+<p>Step 2: The <code>ConflictCommand</code> access <code>filteredSlots</code> in <code>Model</code>, and create a new instance of <code>SlotConflictPredicate</code> with <code>filteredSlots</code>.</p>
+</li>
+<li>
+<p>Step 3: <code>Model</code> filters slots that is conflicting among the <code>filteredSlots</code> using the <code>SlotConflictPredicate</code>.</p>
+</li>
+<li>
+<p>Step 4: <code>ConflictCommand</code> changes <code>currentDisplaySystemType</code> in <code>Model</code> to <code>DisplaySystemType.SCHEDUEL</code> such that the window will display shorlisted conflicting slots.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/ConflictSequenceDiagram.png" alt="ConflictSequenceDiagram">
+</div>
+<div class="title">Figure 21. Interactions Inside the Logic Component for the <code>conflicts</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-filter-conflicting-slots"><a class="link" href="#aspect-how-to-filter-conflicting-slots">Aspect: How to filter conflicting slots</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Make use of Predicate</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More organised and more object-oriented style of programming. Also, the use of predicate can be extended to other commands, e.g. <code>findslots</code>.</p>
+</li>
+<li>
+<p>Cons: Relatively more complicated to implement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Directly check for conflicting timing among the list of slots</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More straightforward in implementation</p>
+</li>
+<li>
+<p>Cons: Low level of OOP. It should not be encouraged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="statistics"><a class="link" href="#statistics">3.6. Statistics</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="sect3">
+<h4 id="implementation-7"><a class="link" href="#implementation-7">3.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OverallStats</code> under UI component handles the translation of three sets of data: list of pets, schedule, and list of inventory.</p>
+</li>
+<li>
+<p>Data in <code>OverallStats</code> is obtained from <code>Logic</code>.</p>
+</li>
+<li>
+<p>The statistics displayed will automatically update if there is a change  in any related information.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>How we implemented overall statistic on UI:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The statistics for pets are shown in a form of pie chart, while the pets are grouped according to their species.</p>
+</li>
+<li>
+<p>The schedule statistics is in the form of a timetable of recent 3 days. Each slot is represented as a shaded rectangle in the timetable.</p>
+</li>
+<li>
+<p>The inventory data are generated from the list of pets, and grouped together by their names, such that users have a better understanding of overall food consumption. The list of inventory is represented as a bar chart.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is the process of how the overall statistics is displayed to the user:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user key in the command 'stats', then the Logic component processes the input and creates an instance of <code>StatsCommand</code>.
+The <code>StatsCommand</code> first calls <code>Model#updateAll()</code> to make sure that the model will update <code>filteredPets</code>, <code>filteredSlots</code>, and <code>filteredFoodCollections</code> to show the full list of <code>Pet</code>, <code>Slot</code> and <code>FoodCollection</code> in the <code>PetTracker</code>.
+After that, the <code>StatsCommand</code> calls <code>Model#changeDisplaySystem(DisplaySystemType.STATISTICS</code>) such that the application will later switch the window to show <code>OverallStats</code>.
+In the Ui component, there is a new instance of <code>OverallStats</code> created, while <code>Model#getFilteredPets</code>, <code>Model#getFilteredSlots</code>, and <code>Model#getFilteredFoodCollections</code> are passed in the instance for processing. <code>OverallStats</code> then generates diagrams according to the data passes in.</p>
+</li>
+<li>
+<p>Step 2: The user inputs a command that modifies the UniquePetList, e.g 'editpet 1 s/cat'. The <code>CommandResult</code> of any <code>EditPetCommand</code> has <code>type</code> with <code>DisplaySystemType.NO_CHANGE</code>. The Ui component identifies the <code>type</code> in the <code>CommandResult</code> and then refresh the window if it is <code>NO_CHANGE</code>. In this case, the window will refresh and create another new instance of <code>OverallStats</code> with the updated list of pets. Therefore the window always shows statistics of the most updated list of pets, slots and food collections.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following is the sequential diagram of the command <code>stats</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/StatsLogicSequenceDiagram.png" alt="StatsLogicSequenceDiagram">
+</div>
+<div class="title">Figure 22. Interactions Inside the <strong>Logic</strong> Component for the <code>stats</code> Command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dev-guide/StatsUiSequenceDiagram.png" alt="StatsUiSequenceDiagram">
+</div>
+<div class="title">Figure 23. Interactions Inside the <strong>Ui</strong> Component for the <code>stats</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-update-diagrams-when-there-are-changes"><a class="link" href="#aspect-how-to-update-diagrams-when-there-are-changes">Aspect: How to update diagrams when there are changes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Refresh the screen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and only need to refer to <code>model</code> to get data.</p>
+</li>
+<li>
+<p>Cons: Takes time to process the whole lists of data even though there is only one small change in one of the item (pets, slots or foo collection). This approach might be time consuming when the data size is too large.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Make use of <code>Listener</code> to detect change in <code>UniquePetList</code> and make changes accordingly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Avoid unnecessary processing of data. e.g. The diagrams need not be regenerated when there is no change in pet species, pet food, and recent schedule.</p>
+</li>
+<li>
+<p>Cons: More complicated implementation. There might be more coupling between <code>OverallStats</code> under Ui component and Listener class under Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1065,103 +1260,9 @@ just its size</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="statistics"><a class="link" href="#statistics">3.7. Statistics</a></h3>
-<div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">3.7.1. Implementation</a></h4>
-<div class="paragraph">
-<p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>OverallStatistics</code> under UI component handles the translation of three sets of data: list of pets, schedule, and list of inventory.</p>
-</li>
-<li>
-<p>Data in <code>OverallStatistics</code> is obtained from <code>Logic</code>.</p>
-</li>
-<li>
-<p>The statistics displayed will automatically update if there is a change  in any related information.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>How we implemented overall statistic on UI:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The statistics for pets are shown in a form of pie chart, while the pets are grouped according to their species.</p>
-</li>
-<li>
-<p>The schedule statistics is in the form of a timetable of recent 3 days. Each slot is represented as a shaded rectangle in the timetable.</p>
-</li>
-<li>
-<p>The inventory data are generated from the list of pets, and grouped together by their names, such that users have a better understanding of overall food consumption. The list of inventory is represented as a bar chart.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here is the process of how the overall statistics is displayed to the user:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Step 1: The user key in the command 'stats', then the Logic component processes the input and creates an instance of <code>StatsCommand</code>.
-The <code>StatsCommand</code> first calls <code>Model#updateAll()</code> to make sure that the model will update <code>filteredPets</code>, <code>filteredSlots</code>, and <code>filteredFoodCollections</code> to show the full list of <code>Pet</code>, <code>Slot</code> and <code>FoodCollection</code> in the <code>PetTracker</code>.
-After that, the <code>StatsCommand</code> calls <code>Model#changeDisplaySystem(DisplaySystemType.STATISTICS</code>) such that the application will later switch the window to show <code>OverallStatistics</code>.
-In the Ui component, there is a new instance of <code>OverallStatistics</code> created, while <code>Model#getFilteredPets</code>, <code>Model#getFilteredSlots</code>, and <code>Model#getFilteredFoodCollections</code> are passed in the instance for processing. <code>OverallStatistics</code> then generates diagrams according to the data passes in.</p>
-</li>
-<li>
-<p>Step 2: The user inputs a command that modifies the UniquePetList, e.g 'editpet 1 s/cat'. The <code>CommandResult</code> of any <code>EditPetCommand</code> has <code>type</code> with <code>DisplaySystemType.NO_CHANGE</code>. The Ui component identifies the <code>type</code> in the <code>CommandResult</code> and then refresh the window if it is <code>NO_CHANGE</code>. In this case, the window will refresh and create another new instance of <code>OverallStatistics</code> with the updated list of pets. Therefore the window always shows statistics of the most updated list of pets, slots and food collections.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Following is the sequential diagram of the command <code>stats</code>
-<span class="image"><img src="images/dev-guide/StatsSequenceDiagram.png" alt="StatsSequenceDiagram"></span></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-to-update-diagrams-when-there-are-changes"><a class="link" href="#aspect-how-to-update-diagrams-when-there-are-changes">Aspect: How to update diagrams when there are changes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative 1 (current choice): Refresh the screen</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement and only need to refer to <code>model</code> to get data.</p>
-</li>
-<li>
-<p>Cons: Takes time to process the whole lists of data even though there is only one small change in one of the item (pets, slots or foo collection). This approach might be time consuming when the data size is too large.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 2: Make use of <code>Listener</code> to detect change in <code>UniquePetList</code> and make changes accordingly</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Avoid unnecessary processing of data. e.g. The diagrams need not be regenerated when there is no change in pet species, pet food, and recent schedule.</p>
-</li>
-<li>
-<p>Cons: More complicated implementation. There might be more coupling between <code>OverallStatistics</code> under Ui component and Listener class under Model component.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1846,4 +1947,4 @@ Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:44:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:24:07 UTC</div></div></div></body></html>

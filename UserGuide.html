@@ -404,6 +404,9 @@ Loads the file pettracker.json from the hard disk.</p>
 <div class="sect3">
 <h4 id="statistics-code-stats-code"><a class="link" href="#statistics-code-stats-code">5.1.6. Statistics: <code>stats</code></a></h4>
 <div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="paragraph">
 <p>Provides statistics about the pet tracker, schedule system, and inventory.<br></p>
 </div>
 <div class="exampleblock">
@@ -427,6 +430,9 @@ Loads the file pettracker.json from the hard disk.</p>
 </div>
 <div class="sect2">
 <h3 id="pet-related-commands"><a class="link" href="#pet-related-commands">5.2. Pet-related commands</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
 <div class="sect3">
 <h4 id="adding-a-pet-code-addpet-code"><a class="link" href="#adding-a-pet-code-addpet-code">5.2.1. Adding a pet: <code>addpet</code></a></h4>
 <div class="paragraph">
@@ -443,7 +449,7 @@ Loads the file pettracker.json from the hard disk.</p>
 <p>The date of birth must be in the format of d/M/yyyy, e.g. 01/01/2019, 1/7/2018</p>
 </li>
 <li>
-<p>The gender must be either <code>female</code> or <code>male</code>.</p>
+<p>The gender must be either <code>female</code> or <code>male</code>. Letter case does not matter.</p>
 </li>
 <li>
 <p>Food is specified as a type of food complied with quantity of weekly consumption in an arbitrary unit. The food name and amount should be separated by a colon ":". There can be more than 1 types of food for one pet.</p>
@@ -867,8 +873,15 @@ Deletes the 2nd slot in the schedule (same as the first example in this section)
 <div class="paragraph">
 <p>Displays the slots that have a conflict, i.e., an overlap in time with another occupied slot.</p>
 </div>
-<div class="paragraph">
-<p>Upon calling this command, the program display will be switched to show all conflicted slots. These conflicted slots are shown sequentially as a list and are ordered chronologically, from earliest to latest.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the screen is not displaying the ful list of slots due to previous commands (e.g. findslots), command <code>conflicts</code> will show a list of conflicting slots among the shortlisted slots.</p>
+</li>
+<li>
+<p>Otherwise, upon calling this command, the program display will be switched to show all conflicted slots. These conflicted slots are shown sequentially as a list and are ordered chronologically, from earliest to latest.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>This command takes in no arguments.</p>
@@ -921,8 +934,8 @@ e.g. <code>load 20200402_21_54_52</code></p>
 e.g. <code>addpet n/Garfield g/male b/01/01/2019 s/cat tabby t/lazy f/Brand A: 30 t/lasagna</code></p>
 </li>
 <li>
-<p><strong>Find pet</strong>: <code>findpets [n/NAME]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>findpets n/garfield n/odie t/jon</code></p>
+<p><strong>Find pet</strong>: <code>findpets PETNAME [MORE PETNAMES]&#8230;&#8203;<br>
+e.g. `findpets garfield odie</code></p>
 </li>
 <li>
 <p><strong>Edit pet</strong>: <code>editpet INDEX [n/name] [b/DATE OF BIRTH]  [t/TAG]&#8230;&#8203;</code><br>
@@ -979,4 +992,4 @@ e.g. <code>deleteslot 2</code></p>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Pet Shop Helper folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:44:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:24:07 UTC</div></div></div></body></html>

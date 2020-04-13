@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Zhao Tianqi - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Pet Store Helper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103-W15-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Zhao Tianqi - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-pet-store-helper"><a class="link" href="#project-pet-store-helper">PROJECT: Pet Store Helper</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pet Store Helper is a desktop application used for pet store owner to manage the store. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 16 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major Enhancement</strong>: <strong>Added the command to display overall statistics</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to take a look at the overall statistics of pets, recent schedule, and food data in the application.</p>
+</li>
+<li>
+<p>Justification: This feature is important because it allows users, mostly pet store owners, to have an overview of the situation in his store. The owner can refer to the data to decide which species he should buy in more. Also, it allows him to have a rough idea of  when are the busy hours in recent days, and the weekly food consumption as well. Also, it saves effort for users to click into different displays one by one to check the situation of the store.</p>
+</li>
+<li>
+<p>Highlights: This feature uses a pie chart, a timetable, and a bar chart to show the statistics of pet, recent schedule, and food respectively. It is allows visualisation of the overall situation of the pet store in a user friendly manner.</p>
+</li>
+<li>
+<p>Credits: Resizing of charts and panes as the window resizes. Source from the link: <a href="https://www.javacodegeeks.com/2014/04/javafx-tip-1-resizable-canvas.html" class="bare">https://www.javacodegeeks.com/2014/04/javafx-tip-1-resizable-canvas.html</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added warning messages to the user. When the user input contains more than 1 entry for name, species, date of birth, gender, slot time, and slot duration, there will be a warning message displayed to user. It states that the application only accepts the last entry for each field.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=15-4&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=tianqi77&amp;tabRepo=AY1920S2-CS2103-W15-4%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=15-4&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=tianqi77&amp;tabRepo=AY1920S2-CS2103-W15-4%2Fmain%5Bmaster%5D">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3.1</code> (1 release) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored Logic component of AB3 to adapt to Pet Store Helper. (Pull Request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/15">#15</a>)</p>
+</li>
+<li>
+<p>Added warning message (Pull request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/81">#81</a>)</p>
+</li>
+<li>
+<p>Changed find commands to filter pets that contain the keyword (instead of pets that has certain word which match the keyword exactly) (Pull Request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/136">#136</a>)</p>
+</li>
+<li>
+<p>Make find commands to switch display automatically. (e.g. <code>findslots n/keyword</code> will switch to display of filtered slots.) Allowed find slots by more than 1 dates (Pull Request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/79">#79</a>)</p>
+</li>
+<li>
+<p>Avoid confusion in index involved commands (i.e. edit and delete commands). Make sure the index refers to the whole list when commands is in different system with displayed screen. (e.g. editpet when screen is displaying inventory)(Pull Request <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/87">#87</a>)</p>
+</li>
+<li>
+<p>Fix bugs reported after practical exam dry run (<a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/134">#134</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/136">#136</a>, <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/133">#133</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/48">#48</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103-W15-4/main/pull/61">#61</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="statistics-code-stats-code"><a class="link" href="#statistics-code-stats-code">Statistics: <code>stats</code></a></h4>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="paragraph">
+<p>Provides statistics about the pet tracker, schedule system, and inventory.<br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>There is a pie chart representing the ratio of different pet species.<br></p>
+</li>
+<li>
+<p>A timetable that shows an overall schedule for recent 3 days.<br></p>
+</li>
+<li>
+<p>A bar chart that shows the weekly consumption of different pet food.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pet-related-commands"><a class="link" href="#pet-related-commands">Pet-related commands</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-pet-code-addpet-code"><a class="link" href="#adding-a-pet-code-addpet-code">Adding a pet: <code>addpet</code></a></h4>
+<div class="paragraph">
+<p>Adds a pet to the pet tracker system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addpet n/NAME g/GENDER b/DATE OF BIRTH s/SPECIES f/FOOD : AMOUNT [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The date of birth must be in the format of d/M/yyyy, e.g. 01/01/2019, 1/7/2018</p>
+</li>
+<li>
+<p>The gender must be either <code>female</code> or <code>male</code>. Letter case does not matter.</p>
+</li>
+<li>
+<p>Food is specified as a type of food complied with quantity of weekly consumption in an arbitrary unit. The food name and amount should be separated by a colon ":". There can be more than 1 types of food for one pet.</p>
+</li>
+<li>
+<p>A pet can have any number of tags (including 0). Each tag must be restricted to one word .</p>
+</li>
+<li>
+<p>The application ignores letter case of user input. The name, species, gender of pets, and name of food will be displayed in the format of  "Xxx Xxx &#8230;&#8203;".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addpet n/Garfield g/male b/01/01/2019 s/cat f/Brand A: 30 t/lazy t/lasagna</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-pets-by-names-code-findpets-code"><a class="link" href="#finding-pets-by-names-code-findpets-code">Finding pets by names: <code>findpets</code></a></h4>
+<div class="paragraph">
+<p>Finds pets whose name contains any of the given keywords. The application will automatically change to the pet display system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findpets PETNAME [MORE PETNAMES]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one argument must be supplied.</p>
+</li>
+<li>
+<p>Pets matching at least 1 keyword will be returned (i.e. <code>OR</code> search).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findpets garfield odie</code><br>
+Returns a list of pets, whose names either contain <code>garfield</code> or <code>odie</code> or both.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-pet-code-editpet-code"><a class="link" href="#editing-a-pet-code-editpet-code">Editing a pet: <code>editpet</code></a></h4>
+<div class="paragraph">
+<p>Edits any field of an existing pet in the system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editpet INDEX  [n/NAME] [g/GENDER] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the app is displaying pets, the index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole pet list.</p>
+</li>
+<li>
+<p>The existing field(s) of the pet will be removed, i.e adding of list of food and tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all tags of a pet by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+<li>
+<p>Similarly to <code>addpet</code> command, pet name, species, gender, and name of food will be displayed in the format of "Xxx Xxx&#8230;&#8203;".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>display p</code><br>
+<code>editpet 2 n/Coco b/02/01/2020 t/cuddly t/grey</code><br>
+Overwrites information of the 2nd pet in the system with name "Coco", date of birth "2 Jan 2020, and 2 tags of “cuddly”, “grey”.</p>
+</li>
+<li>
+<p><code>findpets garfield</code><br>
+<code>editpet 2 n/Coco</code><br>
+Overwrites the name of the 2nd pet in the results of <code>findpets garfield</code> to "Coco"</p>
+</li>
+<li>
+<p><code>display s</code><br>
+<code>editpet 1 n/garfield</code>
+Overwrites name of the 1st pet in the whole pet list to be "Garfield".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-pet-code-deletepet-code"><a class="link" href="#deleting-a-pet-code-deletepet-code">Deleting a pet: <code>deletepet</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified pet from the system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deletepet INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the app is displaying pets, the index refers to the index number shown in the displayed pets list, and must be a positive integer, e.g. 1, 2, 3, &#8230;&#8203; Otherwise, the index refers to the number in the whole pet list.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>display p</code><br>
+<code>deletepet 2</code><br>
+Deletes the 2nd pet in the system.</p>
+</li>
+<li>
+<p><code>findpets n/garfield</code><br>
+<code>deletepet 2</code><br>
+Deletes the 2nd pet in the results of the <code>findpets garfield</code> command.</p>
+</li>
+<li>
+<p><code>display i</code><br>
+<code>deletepet 2</code>
+Deletes 2nd pet in the whole pet list.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/LogicClassDiagram.png" alt="LogicClassDiagram">
+</div>
+<div class="title">Figure 1. Class Diagram of the Logic Component</div>
+</div>
+<div class="sect2">
+<h3 id="statistics"><a class="link" href="#statistics">Statistics</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>We are generating the overall statistics of Pet Store Helper and translate the data in a user-friendly manner.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OverallStats</code> under UI component handles the translation of three sets of data: list of pets, schedule, and list of inventory.</p>
+</li>
+<li>
+<p>Data in <code>OverallStats</code> is obtained from <code>Logic</code>.</p>
+</li>
+<li>
+<p>The statistics displayed will automatically update if there is a change  in any related information.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>How we implemented overall statistic on UI:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The statistics for pets are shown in a form of pie chart, while the pets are grouped according to their species.</p>
+</li>
+<li>
+<p>The schedule statistics is in the form of a timetable of recent 3 days. Each slot is represented as a shaded rectangle in the timetable.</p>
+</li>
+<li>
+<p>The inventory data are generated from the list of pets, and grouped together by their names, such that users have a better understanding of overall food consumption. The list of inventory is represented as a bar chart.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is the process of how the overall statistics is displayed to the user:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user key in the command 'stats', then the Logic component processes the input and creates an instance of <code>StatsCommand</code>.
+The <code>StatsCommand</code> first calls <code>Model#updateAll()</code> to make sure that the model will update <code>filteredPets</code>, <code>filteredSlots</code>, and <code>filteredFoodCollections</code> to show the full list of <code>Pet</code>, <code>Slot</code> and <code>FoodCollection</code> in the <code>PetTracker</code>.
+After that, the <code>StatsCommand</code> calls <code>Model#changeDisplaySystem(DisplaySystemType.STATISTICS</code>) such that the application will later switch the window to show <code>OverallStats</code>.
+In the Ui component, there is a new instance of <code>OverallStats</code> created, while <code>Model#getFilteredPets</code>, <code>Model#getFilteredSlots</code>, and <code>Model#getFilteredFoodCollections</code> are passed in the instance for processing. <code>OverallStats</code> then generates diagrams according to the data passes in.</p>
+</li>
+<li>
+<p>Step 2: The user inputs a command that modifies the UniquePetList, e.g 'editpet 1 s/cat'. The <code>CommandResult</code> of any <code>EditPetCommand</code> has <code>type</code> with <code>DisplaySystemType.NO_CHANGE</code>. The Ui component identifies the <code>type</code> in the <code>CommandResult</code> and then refresh the window if it is <code>NO_CHANGE</code>. In this case, the window will refresh and create another new instance of <code>OverallStats</code> with the updated list of pets. Therefore the window always shows statistics of the most updated list of pets, slots and food collections.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following is the sequential diagram of the command <code>stats</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/StatsLogicSequenceDiagram.png" alt="StatsLogicSequenceDiagram">
+</div>
+<div class="title">Figure 2. Interactions Inside the <strong>Logic</strong> Component for the <code>stats</code> Command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/StatsUiSequenceDiagram.png" alt="StatsUiSequenceDiagram">
+</div>
+<div class="title">Figure 3. Interactions Inside the <strong>Ui</strong> Component for the <code>stats</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-update-diagrams-when-there-are-changes"><a class="link" href="#aspect-how-to-update-diagrams-when-there-are-changes">Aspect: How to update diagrams when there are changes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Refresh the screen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and only need to refer to <code>model</code> to get data.</p>
+</li>
+<li>
+<p>Cons: Takes time to process the whole lists of data even though there is only one small change in one of the item (pets, slots or foo collection). This approach might be time consuming when the data size is too large.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Make use of <code>Listener</code> to detect change in <code>UniquePetList</code> and make changes accordingly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Avoid unnecessary processing of data. e.g. The diagrams need not be regenerated when there is no change in pet species, pet food, and recent schedule.</p>
+</li>
+<li>
+<p>Cons: More complicated implementation. There might be more coupling between <code>OverallStats</code> under Ui component and Listener class under Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conflict-feature"><a class="link" href="#conflict-feature">Conflict feature</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhao Tianqi</em></p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The conflict feature shows a list of all slots that has overlapping time period.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It makes uses of <code>SlotConflictPredicate</code> which implements <code>SlotPredicate</code> to filter slots that has a conflicting timing with some other slots.</p>
+</li>
+<li>
+<p>If the screen is displaying shortlisted slots, <code>conflics</code> only shows slots with conflicts among the shortlisted list. Otherwise, it shows conflicts in the full slot list</p>
+</li>
+<li>
+<p>The command automatically switch display to slots.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is a scenario of using <code>conflicts</code> command:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user inputs "conflicts" in the command line. The Logic component processes the input and creates a new instance of <code>ConflictCommand</code></p>
+</li>
+<li>
+<p>Step 2: The <code>ConflictCommand</code> access <code>filteredSlots</code> in <code>Model</code>, and create a new instance of <code>SlotConflictPredicate</code> with <code>filteredSlots</code>.</p>
+</li>
+<li>
+<p>Step 3: <code>Model</code> filters slots that is conflicting among the <code>filteredSlots</code> using the <code>SlotConflictPredicate</code>.</p>
+</li>
+<li>
+<p>Step 4: <code>ConflictCommand</code> changes <code>currentDisplaySystemType</code> in <code>Model</code> to <code>DisplaySystemType.SCHEDUEL</code> such that the window will display shorlisted conflicting slots.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/ConflictSequenceDiagram.png" alt="ConflictSequenceDiagram">
+</div>
+<div class="title">Figure 4. Interactions Inside the Logic Component for the <code>conflicts</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-filter-conflicting-slots"><a class="link" href="#aspect-how-to-filter-conflicting-slots">Aspect: How to filter conflicting slots</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Make use of Predicate</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More organised and more object-oriented style of programming. Also, the use of predicate can be extended to other commands, e.g. <code>findslots</code>.</p>
+</li>
+<li>
+<p>Cons: Relatively more complicated to implement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Directly check for conflicting timing among the list of slots</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More straightforward in implementation</p>
+</li>
+<li>
+<p>Cons: Low level of OOP. It should not be encouraged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:24:07 UTC</div></div></div></body></html>
