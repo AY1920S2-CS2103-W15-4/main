@@ -75,8 +75,13 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-pet">F.2. Deleting a pet</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#switching-display">F.2. Switching display</a></li>
+<li><a href="#adding-a-pet">F.3. Adding a pet</a></li>
+<li><a href="#deleting-a-pet">F.4. Deleting a pet</a></li>
+<li><a href="#adding-a-slot">F.5. Adding a slot</a></li>
+<li><a href="#deleting-a-slot">F.6. Deleting a slot</a></li>
+<li><a href="#view-conflicted-slots">F.7. View conflicted slots</a></li>
+<li><a href="#saving-data">F.8. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -500,6 +505,9 @@ The lifeline for <code>DeletePetCommandParser</code> should end at the destroy m
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<div class="paragraph">
+<p><em>Written by Chen Shenghao</em></p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/dev-guide/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -1068,7 +1076,7 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 <p>Step 3: <code>Model</code> filters slots that is conflicting among the <code>filteredSlots</code> using the <code>SlotConflictPredicate</code>.</p>
 </li>
 <li>
-<p>Step 4: <code>ConflictCommand</code> changes <code>currentDisplaySystemType</code> in <code>Model</code> to <code>DisplaySystemType.SCHEDUEL</code> such that the window will display shorlisted conflicting slots.</p>
+<p>Step 4: <code>ConflictCommand</code> changes <code>currentDisplaySystemType</code> in <code>Model</code> to <code>DisplaySystemType.SCHEDULE</code> such that the window will display shortlisted conflicting slots.</p>
 </li>
 </ul>
 </div>
@@ -1082,31 +1090,31 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-filter-conflicting-slots"><a class="link" href="#aspect-how-to-filter-conflicting-slots">Aspect: How to filter conflicting slots</a></h5>
+<h5 id="aspect-data-structure-to-store-slots-and-method-of-checking-for-conflicts"><a class="link" href="#aspect-data-structure-to-store-slots-and-method-of-checking-for-conflicts">Aspect: Data structure to store slots and method of checking for conflicts:</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Make use of Predicate</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More organised and more object-oriented style of programming. Also, the use of predicate can be extended to other commands, e.g. <code>findslots</code>.</p>
-</li>
-<li>
-<p>Cons: Relatively more complicated to implement</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 2: Directly check for conflicting timing among the list of slots</p>
+<p>Alternative 1 (current choice): Store slots in a list, with pairwise comparison between elements to find out conflicts</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: More straightforward in implementation</p>
 </li>
 <li>
-<p>Cons: Low level of OOP. It should not be encouraged.</p>
+<p>Cons: The performance might not be scalable. Algorithm does not minimize the computation time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Store slots in an interval tree</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Searching for conflicting slots takes less time. The algorithm is more efficient.</p>
+</li>
+<li>
+<p>Cons: Implementation of the data structure needs relatively high level of commitment.</p>
 </li>
 </ul>
 </div>
@@ -1226,6 +1234,9 @@ In the Ui component, there is a new instance of <code>OverallStats</code> create
 </div>
 <div class="sect2">
 <h3 id="back-up-and-load-feature"><a class="link" href="#back-up-and-load-feature">3.7. Back up and load feature</a></h3>
+<div class="paragraph">
+<p><em>Written by Chen Shenghao</em></p>
+</div>
 <div class="sect3">
 <h4 id="implementation-8"><a class="link" href="#implementation-8">3.7.1. Implementation</a></h4>
 <div class="paragraph">
@@ -1989,7 +2000,85 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-pet"><a class="link" href="#deleting-a-pet">F.2. Deleting a pet</a></h3>
+<h3 id="switching-display"><a class="link" href="#switching-display">F.2. Switching display</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change display of the program</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Program is pre-populated with the sample data of pets and slots.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>display s</code><br>
+Expected: Program display is changed to show list of slots.</p>
+</li>
+<li>
+<p>Test case: <code>display c</code><br>
+Expected: Program display is changed to show slots in calendar view.</p>
+</li>
+<li>
+<p>Test case: <code>display i</code><br>
+Expected: Program display is changed to show inventory.</p>
+</li>
+<li>
+<p>Test case: <code>display p</code><br>
+Expected: Program display is changed to back show list of pets.</p>
+</li>
+<li>
+<p>Test case: <code>display x</code><br>
+Expected: Program display does not change. Error message shown.</p>
+</li>
+<li>
+<p>Other incorrect display commands to try: <code>display</code>, <code>display I</code>, <code>Display i</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-pet"><a class="link" href="#adding-a-pet">F.3. Adding a pet</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a pet while all pets are displayed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Program is showing list of pets to (run <code>display p</code>)</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>addpet n/Alice g/female b/13/11/2015 s/dog f/Dog Food: 10 t/cute</code><br>
+Expected: A new pet "Alice" is added to the end of the pet list. Details of the newly added pet shown above the list of pets.</p>
+</li>
+<li>
+<p>Test case: <code>addpet n/Alice g/female b/24/12/2015 s/rabbit f/Rabbit Food: 15 t/fluffy</code><br>
+Expected: No pet is added. Error details shown above the list of pets.</p>
+</li>
+<li>
+<p>Other incorrect addpet commands to try: <code>addpet n/Bubbles g/helicopter b/8/10/2015 s/cat f/Cat Food: 15 t/white</code>, <code>addpet n/Bubbles g/female b/78/10/2015 s/cat f/Cat Food: 15 t/white</code><br>
+Expected: No pet is added, with the relevant and appropriate error details shown above the list of pets.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-pet"><a class="link" href="#deleting-a-pet">F.4. Deleting a pet</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2001,11 +2090,11 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>deletepet 1</code><br>
-Expected: First pet is deleted from the list. Details of the deleted pet shown in the status message. Slots that the pet used to occupy is also deleted.</p>
+Expected: First pet is deleted from the list. Details of the deleted pet shown above the list of pets. Slots that the pet used to occupy is also deleted.</p>
 </li>
 <li>
 <p>Test case: <code>deletepet 0</code><br>
-Expected: No pet is deleted. Error details shown in the status message. Slots remain the same.</p>
+Expected: No pet is deleted. Error details shown above the list of pets. Slots remain the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>deletepet</code>, <code>deletepet x</code> (where x is larger than the list size)<br>
@@ -2018,7 +2107,107 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="adding-a-slot"><a class="link" href="#adding-a-slot">F.5. Adding a slot</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a slot while all slots are displayed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Program is showing list of slots to (run <code>display s</code>). Program is pre-populated with the sample data of pets and slots.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>addslot n/Bob t/6/4/2020 1000 d/60</code><br>
+Expected: A new slot is added to slot list. Details of the newly added slot shown above the list of slots. Because it is the earliest of all slots, it appears at the 1st slot in the list.</p>
+</li>
+<li>
+<p>Test case: <code>addslot n/Cindy t/67/4/2020 1000 d/60</code><br>
+Expected: No slot is added. Error details shown above the list of slots.</p>
+</li>
+<li>
+<p>Other incorrect addslot commands to try: <code>addslot</code>, <code>addslot n/Duke t/6/4/2020 1130 d/60</code>, <code>addslot n/Cindy t/6/4/2020 2300 d/120</code><br>
+Expected: No slot is added, with the relevant and appropriate error details shown above the list of slots.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-slot"><a class="link" href="#deleting-a-slot">F.6. Deleting a slot</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a slot while all slots are displayed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Program is showing list of slots to (run <code>display s</code>). Program is pre-populated with the sample data of pets and slots.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>deleteslot 1</code><br>
+Expected: First slot is deleted from the list. Details of the deleted slot shown above the list of slots.</p>
+</li>
+<li>
+<p>Test case: <code>deleteslot 0</code><br>
+Expected: No slot is deleted. Error details shown above the list of slots.</p>
+</li>
+<li>
+<p>Other incorrect deleteslot commands to try: <code>deleteslot</code>, <code>deleteslot x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-conflicted-slots"><a class="link" href="#view-conflicted-slots">F.7. View conflicted slots</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing slots with conflicts</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Program is pre-populated with the sample data of pets and slots.<br>
+Initial view: On Mon 6/4/2020, there is a single slot occupied by "Gru" from 13:00 - 14:40 (as per the sample data). It is not in conflict.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>conflicts</code><br>
+Expected: Program successfully shows no slots with message "0 slots listed!", as the sample data has no slots in conflict.</p>
+</li>
+<li>
+<p>Test case: <code>addslot n/Bob t/6/4/2020 1400 d/60</code><br>
+Expected: A new slot is added to slot list. Details of the newly added slot shown above the list of slots. This newly added slot and the slot occupied by Gru are now marked as "[CONFLICT]"</p>
+</li>
+<li>
+<p>Test case: <code>conflicts</code><br>
+Expected: Program successfully shows only the two slots on 6/4/2020 with message "2 slots listed!"</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.8. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2043,4 +2232,4 @@ Expected: Data is not loaded. Start with an empty Pet Tracker.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:31:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:44:37 UTC</div></div></div></body></html>
