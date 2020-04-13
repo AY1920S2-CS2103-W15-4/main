@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pet Store Helper(PSH) is a desktop application used for pet store owners to manage different aspects of their pet store including pet logging, scheduling and inventory management. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 15kLOC.</p>
+<p>Pet Store Helper(PSH) is a desktop application used for pet store owners to manage different aspects of their pet store including pet logging, scheduling and inventory management. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 16kLOC.</p>
 </div>
 </div>
 </div>
@@ -107,8 +107,11 @@
 </tr>
 </tbody>
 </table>
+<div id="Design-Model" class="paragraph">
+<p><em>Written by Zhu Ruicong</em></p>
+</div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">Model component</a></h3>
+<h3 id="model-component"><a class="link" href="#model-component">Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="../images/dev-guide/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -127,7 +130,7 @@
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Pet Tracker data. Note that the Pet Tracker keeps track of both the schedule system and the pet system.</p>
+<p>stores the Pet Store Helper data. Note that the Pet Tracker keeps track of a UniquePetList, which in turn maintains the Pet system, Schedule system and Inventory(FoodCollection) system.</p>
 </li>
 <li>
 <p>exposes an <code>ObservableList&lt;Pet&gt;</code>, an <code>ObservableList&lt;Slot&gt;</code>, and an <code>ObservableList&lt;FoodCollection&gt;</code> that are unmodifiable and can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -140,6 +143,9 @@
 </div>
 <div class="sect2">
 <h3 id="inventory-feature"><a class="link" href="#inventory-feature">Inventory feature</a></h3>
+<div class="paragraph">
+<p><em>Written by Zhu Ruicong</em></p>
+</div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
@@ -170,10 +176,10 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 <p>Step 1: The user launches the application. A <code>UniquePetList</code> is initialized in <code>PetTracker</code>, upon which a <code>FoodCollectionList</code> item is created to store the food data of the pets in the list(if it is an empty list, <code>FoodCollectionList</code> is also stores an empty list of <code>FoodCollection</code>)</p>
 </li>
 <li>
-<p>Step 2: The user executes 'display i' command. The <code>display</code> command calls Model#ChangeDisplaySystem() and the <code>i</code> display type determines the displayed list is switched to <code>ObservableList&lt;FoodCollection&gt;</code>. <code>Model$getFilteredDisplayList()</code> then acquires the list and sends it to Ui unit for display.</p>
+<p>Step 2: The user executes 'display i' command. The <code>display</code> command calls Model#ChangeDisplaySystem() and the <code>i</code> display type determines the displayed list is switched to <code>ObservableList&lt;FoodCollection&gt;</code>. <code>Model#getFilteredDisplayList()</code> then acquires the list and sends it to Ui unit for display.</p>
 </li>
 <li>
-<p>Step 3: The user inputs a command that modifies the <code>UniquePetList</code>, e.g 'editpet 1 f/catfood:100'. <code>UniquePetList$internalList</code> is an instance of <code>ObservableList&lt;Pet&gt;</code>. Thus when it is modified, a <code>ListChangeListener&lt;Pet&gt;</code> is woken up and it calls <code>UniquePetList$updateFoodCollectionList()</code> to update the <code>FoodCollectionList</code> according to the modified Pet list.</p>
+<p>Step 3: The user inputs a command that modifies the <code>UniquePetList</code>, e.g 'editpet 1 f/catfood:100'. <code>UniquePetList#internalList</code> is an instance of <code>ObservableList&lt;Pet&gt;</code>. Thus when it is modified, a <code>ListChangeListener&lt;Pet&gt;</code> is woken up and it calls <code>UniquePetList#updateFoodCollectionList()</code> to update the <code>FoodCollectionList</code> according to the modified Pet list.</p>
 </li>
 </ul>
 </div>
@@ -185,6 +191,28 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 <img src="../images/dev-guide/DisplayInventorySequenceDiagram.png" alt="DisplayInventorySequenceDiagram">
 </div>
 <div class="title">Figure 2. Interactions Inside the Logic Component for the <code>display i</code> Command</div>
+</div>
+<div class="paragraph">
+<p>Note that there is no explicit initialization or update for <code>FoodCollection</code> in <code>FoodCollectionList</code>. <code>FoodCollectionList</code> is synchronized to the list of pet(<code>UniquePetList#internalList</code>) in the <code>UniquePetList</code> through <code>ListChangeListener&lt;Pet&gt;</code>, which is triggered whenever there is a change in the pet list. The sequence diagram below and the steps illustrates this process:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: <code>UniquePetList</code> passes its <code>internalList</code>(referred to as <code>petList</code> in the sequence diagram below).</p>
+</li>
+<li>
+<p>Step 2: <code>FoodCollectionList</code> creates a new <code>FoodCollectionList</code> object <code>temp</code> and extracts <code>temp#internalList</code>.</p>
+</li>
+<li>
+<p>Step 3: Replaces the content in the current <code>internalList</code> with the content in the extracted <code>temp#internalist</code>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/dev-guide/FoodCollectionListChangeSequenceDiagram.png" alt="FoodCollectionListChangeSequenceDiagram">
+</div>
+<div class="title">Figure 3. Interactions Inside Model Class when <code>ListChangeListener&lt;Pet&gt;</code> is triggered</div>
 </div>
 </div>
 <div class="sect3">
@@ -258,4 +286,4 @@ A <code>FoodCollectionList</code> is stored as an attribute of <code>UniquePetLi
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 09:50:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:44:39 UTC</div></div></div></body></html>
